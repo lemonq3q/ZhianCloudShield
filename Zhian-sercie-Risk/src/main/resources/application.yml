@@ -9,13 +9,14 @@ spring:
     url: jdbc:mysql://localhost:3306/demondb?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
     username: root
     password: 20040619Lmy
+#    url: jdbc:mysql://localhost:3306/db2024?characterEncoding=utf8&&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+#    username: root
+#    password: 111111
   profiles:
     active: dev # 多环境配置加载内容dev/prod,不写就是默认default配置
   cache:
     redis:
       time-to-live: 3600
-
-
 
 # ========================mybatis===================
 mybatis:
@@ -32,6 +33,8 @@ mybatis:
 #  tracing:
 #    sampling:
 #      probability: 1.0 #采样率默认为0.1(0.1就是10次只能有一次被记录下来)，值越大收集越及时。
+
+
 
 
 

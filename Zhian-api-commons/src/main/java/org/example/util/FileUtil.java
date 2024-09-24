@@ -11,9 +11,13 @@ import javax.imageio.stream.ImageInputStream;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.Enumeration;
 import java.util.Iterator;
 
@@ -149,4 +153,49 @@ public class FileUtil {
     public static boolean deleteFile(String filePath){
         return true;
     }
+
+
+    public static byte[] fileToByte(String filename){
+        byte[] b = null;
+        try{
+            File file = new File(filename);
+            b = new byte[(int)file.length()];
+            BufferedInputStream is = new BufferedInputStream(new FileInputStream(file));
+            is.read(b);
+            is.close();
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return b;
+    }
+
+
+    public static boolean uploadFile(String savePath,String filePath){
+        try {
+            FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://localhost:9001/FileDataService");
+            fileDataService.upload(savePath, fileToByte(filePath));
+            return true;
+        } catch (MalformedURLException | RemoteException | NotBoundException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean downloadFile(String savePath,String filename){
+        try {
+            FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://localhost:9001/FileDataService");
+            byte[] fileData = fileDataService.getFile(filename);
+            FileOutputStream fos = new FileOutputStream(savePath);
+            fos.write(fileData);
+            fos.close();
+            return true;
+        } catch (NotBoundException | IOException e) {
+            e.printStackTrace();
+            return false;
+       }
+    }
+
+
 }
