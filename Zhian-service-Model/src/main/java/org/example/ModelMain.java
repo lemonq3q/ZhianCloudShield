@@ -8,8 +8,8 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 @SpringBootApplication
 @EnableDiscoveryClient
 @RefreshScope
-public class LoginMain {
+public class ModelMain {
     public static void main(String[] args) {
-        SpringApplication.run(LoginMain.class,args);
+        SpringApplication.run(ModelMain.class, args);
     }
 }

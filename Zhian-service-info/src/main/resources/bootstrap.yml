@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Zhian-service-login
+    name: Zhian-service-info
     ####Spring Cloud Consul for Service Discovery
   cloud:
     consul:
