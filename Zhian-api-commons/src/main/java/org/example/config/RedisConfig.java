@@ -3,6 +3,7 @@ package org.example.config;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.lettuce.core.ReadFrom;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
@@ -12,6 +13,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.RedisSentinelConfiguration;
+import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -20,6 +23,8 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
+
+import static io.lettuce.core.ReadFrom.REPLICA_PREFERRED;
 
 /**
  * <p>
@@ -30,18 +35,29 @@ import java.time.Duration;
 @EnableCaching//启用缓存，这个注解很重要
 //继承CachingConfigurerSupport，为了自定义key的策略，可以不继承
 public class RedisConfig extends CachingConfigurerSupport {
-    @Value("${spring.cache.redis.time-to-live}")
-    private Duration timeToLive = Duration.ZERO;
-
+    /**
+     * 配置读写分离
+     */
     @Bean
-    public RedisConnectionFactory redisConnectionFactory(){
-        LettuceConnectionFactory factory = new LettuceConnectionFactory("127.0.0.1", 6379);
-        factory.setDatabase(0); // Redis数据库索引
-        factory.setPassword(null); // 如果有密码，设置密码
-        factory.setShareNativeConnection(false); // 设置为false以避免共享连接
-        return factory;
+    public RedisConnectionFactory lettuceConnectionFactory() {
+
+        // 配置哨兵节点以及主节点
+        RedisSentinelConfiguration sentinelConfig = new RedisSentinelConfiguration()
+                .master("mymaster")
+                .sentinel("127.0.0.1", 26379)
+                .sentinel("127.0.0.1", 26380)
+                .sentinel("127.0.0.1", 26381);
+
+        LettuceClientConfiguration clientConfig = LettuceClientConfiguration.builder()
+                .readFrom(REPLICA_PREFERRED)
+                .build();
+
+        return new LettuceConnectionFactory(sentinelConfig, clientConfig);
     }
 
+    /**
+     * retemplate相关配置，配置自定义序列化规则为jackson
+     */
     @Bean(name = "redisTemplate")
     public RedisTemplate<String,Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
@@ -64,25 +80,6 @@ public class RedisConfig extends CachingConfigurerSupport {
         template.setHashValueSerializer(jackson2JsonRedisSerializer);
         template.afterPropertiesSet();
         return template;
-    }
-    @Bean
-    public CacheManager cacheManager(RedisConnectionFactory factory) {
-        RedisSerializer<String> redisSerializer = new StringRedisSerializer();
-        //解决查询缓存转换异常的问题
-        ObjectMapper om = new ObjectMapper();
-        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(om,Object.class);
-        // 配置序列化（解决乱码的问题）
-        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(timeToLive)
-                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer))
-                .disableCachingNullValues();
-        RedisCacheManager cacheManager = RedisCacheManager.builder(factory)
-                .cacheDefaults(config)
-                .build();
-        return cacheManager;
     }
 }
 
