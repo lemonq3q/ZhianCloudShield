@@ -121,6 +121,7 @@ public class OneNetImpl implements OneNetService {
 //        if(oldOnenetMsg.getAt()-temperaturesMapper.getTemperatureLastTime(workshop)>2*1000){
 //            temperaturesMapper.insertTemperature(workshop,Float.parseFloat(oldOnenetMsg.getValue()),oldOnenetMsg.getAt());
 //        }
+
     }
 
     private void HumidityHandler(OldOnenetMsg oldOnenetMsg){
