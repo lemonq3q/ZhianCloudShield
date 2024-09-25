@@ -1,15 +1,13 @@
 spring:
   application:
-    name: cloud-riskService
+    name: Zhian-service-login
+    ####Spring Cloud Consul for Service Discovery
   cloud:
     consul:
       host: localhost
       port: 8500
       discovery:
         service-name: ${spring.application.name}
-        prefer-ip-address: true
       config:
-        profile-separator: '-'
+        profile-separator: '-' # default value is ","，we update '-'
         format: YAML
-        watch:
-          wait-time: 1
