@@ -1,0 +1,14 @@
+server:
+  port: 8001
+
+
+# 打印lettuce debug日志，方便查看读写分离效果
+logging:
+  pattern:
+    console: '%date{yyyy-MM-dd HH:mm:ss.SSS} | %highlight(%5level) [%green(%16.16thread)] %clr(%-50.50logger{49}){cyan} %4line -| %highlight(%msg%n)'
+  level:
+    root: info
+    io.lettuce.core: debug
+    org.springframework.data.redis: debug
+
+
