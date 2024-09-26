@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.entity.Device;
+import org.example.resp.ResultData;
 import org.example.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -66,4 +67,8 @@ public class DeviceController {
         return deviceService.deleteDevice(device_id);
     }
 
+    @GetMapping("/device/workshop")
+    public ResultData getWorkshop(String deviceId){
+        return deviceService.getWorkshopByDeviceId(deviceId);
+    }
 }

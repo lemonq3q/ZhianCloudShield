@@ -1,6 +1,6 @@
 spring:
   application:
-    name: Zhian-service-Push
+    name: Zhian-service-push
     ####Spring Cloud Consul for Service Discovery
   cloud:
     consul:

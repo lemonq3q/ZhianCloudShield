@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.entity.Device;
+import org.example.resp.ResultData;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -22,5 +23,5 @@ public interface DeviceService {
     //根据设备号删除设备信息
     public String deleteDevice(String device_id);
 
-
+    public ResultData getWorkshopByDeviceId(String DevId);
 }

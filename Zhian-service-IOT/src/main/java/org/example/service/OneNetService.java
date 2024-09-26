@@ -17,6 +17,5 @@ public interface OneNetService {
 
     public String getAttendanceRecordValidate(String msg,String nonce,String signature);
 
-    public void AttendanceUpdate(OldOnenetMsg oldOnenetMsg);
 }
 

@@ -1,5 +1,7 @@
 package org.example.config;
 
+import ch.qos.logback.classic.pattern.MessageConverter;
+
 public class RabbitmqConfig {
     public static final String ONENET_EXCHANGE = "oneNetExchange";
     public static final String DETECT_EXCHANGE = "detectExchange";
@@ -16,4 +18,5 @@ public class RabbitmqConfig {
     public static final String ATD_ROUTING_KEY = "attendance";
     public static final String ONLINE_ROUTING_KEY = "onlineStatus";
     public static final String RISK_ROUTING_KEY = "risk";
+
 }

@@ -1,7 +1,9 @@
 package org.example.service.impl;
 
+import jakarta.annotation.Resource;
 import org.example.api.ModelApi;
 import org.example.entity.Device;
+import org.example.resp.ResultData;
 import org.example.service.DeviceService;
 import org.example.mapper.DeviceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,5 +96,11 @@ public class DeviceImpl implements DeviceService {
         }catch (Exception e){
             return "failed";
         }
+    }
+
+    @Override
+    public ResultData getWorkshopByDeviceId(String DevId){
+        String workshop = deviceMapper.getWorkshopByDevice_id(DevId);
+        return ResultData.success(workshop);
     }
 }
