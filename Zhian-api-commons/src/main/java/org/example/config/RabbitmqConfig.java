@@ -1,7 +1,9 @@
 package org.example.config;
 
+
 import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
+
 
 public class RabbitmqConfig {
     public static final String ONENET_EXCHANGE = "oneNetExchange";
