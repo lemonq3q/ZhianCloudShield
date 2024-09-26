@@ -1,5 +1,11 @@
 package org.example.mq;
 
-public class OneNetListener {
+import org.example.config.RabbitmqConfig;
+import org.springframework.stereotype.Component;
 
+@Component
+public class OneNetListener extends RabbitmqConfig {
+    public void TemperatureProcess(){
+
+    }
 }
