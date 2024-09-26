@@ -18,11 +18,11 @@ public class AIController {
         String PATH = "..."+picName;
         try {
             File filePath = new File (PATH);
+            file.getBytes();
             file.transferTo(filePath);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
         return null;
     }
 

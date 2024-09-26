@@ -135,6 +135,7 @@ public class OneNetImpl implements OneNetService {
         Map<String, Object> map = new HashMap<>();
         map.put("dev_id", oldOnenetMsg.getDev_id());
         map.put("value", oldOnenetMsg.getValue());
+        map.put("at", oldOnenetMsg.getAt());
         rabbitTemplate.convertAndSend(RabbitmqConfig.TEMP_ROUTING_KEY, JSON.toJSONString(map));
     }
 
@@ -152,6 +153,7 @@ public class OneNetImpl implements OneNetService {
         Map<String, Object> map = new HashMap<>();
         map.put("dev_id", oldOnenetMsg.getDev_id());
         map.put("value", oldOnenetMsg.getValue());
+        map.put("at", oldOnenetMsg.getAt());
         rabbitTemplate.convertAndSend(RabbitmqConfig.HUM_ROUTING_KEY, JSON.toJSONString(map));
     }
 
@@ -165,6 +167,7 @@ public class OneNetImpl implements OneNetService {
         map.put("dev_id", oldOnenetMsg.getDev_id());
         map.put("ds_id", oldOnenetMsg.getDs_id());
         map.put("value", oldOnenetMsg.getValue());
+        map.put("at", oldOnenetMsg.getAt());
         rabbitTemplate.convertAndSend(RabbitmqConfig.ATD_ROUTING_KEY, JSON.toJSONString(map));
     }
 
@@ -172,6 +175,7 @@ public class OneNetImpl implements OneNetService {
         if(oldOnenetMsg.getStatus()==1){
             Map<String, Object> map = new HashMap<>();
             map.put("dev_id", oldOnenetMsg.getDev_id());
+            map.put("at", oldOnenetMsg.getAt());
             rabbitTemplate.convertAndSend(RabbitmqConfig.ONLINE_ROUTING_KEY, JSON.toJSONString(map));
         }
     }
