@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="782172da-5348-45a4-a647-53b2d9240e03" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/Zhian-api-commons/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-api-commons/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/config/RabbitmqConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/config/RabbitmqConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zhian-service-IOT/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-IOT/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zhian-service-IOT/src/main/java/org/example/service/impl/OneNetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-IOT/src/main/java/org/example/service/impl/OneNetImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Zhian-service-IOT/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-IOT/src/main/resources/application.yml" afterDir="false" />
-    </list>
+    <list default="true" id="782172da-5348-45a4-a647-53b2d9240e03" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,7 +144,7 @@
       <workItem from="1727141944954" duration="6037000" />
       <workItem from="1727158740834" duration="8066000" />
       <workItem from="1727258266873" duration="9065000" />
-      <workItem from="1727309721546" duration="3665000" />
+      <workItem from="1727309721546" duration="3975000" />
     </task>
     <servers />
   </component>
