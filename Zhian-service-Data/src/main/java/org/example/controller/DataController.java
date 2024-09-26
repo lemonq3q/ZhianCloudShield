@@ -1,11 +1,14 @@
 package org.example.controller;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
 import org.example.entity.*;
 import org.example.service.DataService;
@@ -13,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.Position;
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 import java.util.List;
 import java.util.Map;
@@ -23,6 +29,11 @@ public class DataController {
     @Autowired
     private DataService dataService;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
 
 
@@ -34,13 +45,19 @@ public class DataController {
      */
     @GetMapping("/getData/getNowTemperature")
 <<<<<<< HEAD
+<<<<<<< HEAD
     public NowTemperature getNowTemperature(String workshop){
         return dataService.getNowTemperature(workshop);
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     public Temperature getNowTemperature(String workshop){
 
         /**return dataService.getNowTemperature(workshop);**/
         return null;
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     }
 
@@ -53,7 +70,11 @@ public class DataController {
      */
     @GetMapping("/getData/getTemperatureByTime")
 <<<<<<< HEAD
+<<<<<<< HEAD
     public List<NowTemperature> getTemperatureByTime(String workshop, long startTime, long endTime){
+=======
+    public List<Temperature> getTemperatureByTime(String workshop,long startTime,long endTime){
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
     public List<Temperature> getTemperatureByTime(String workshop,long startTime,long endTime){
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
@@ -67,7 +88,11 @@ public class DataController {
      */
     @GetMapping("/getData/getNowHumidity")
 <<<<<<< HEAD
+<<<<<<< HEAD
     public NowHumidity getNowHumidity(String workshop){
+=======
+    public Humidity getNowHumidity(String workshop){
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
     public Humidity getNowHumidity(String workshop){
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
@@ -83,7 +108,11 @@ public class DataController {
      */
     @GetMapping("/getData/getHumidityByTime")
 <<<<<<< HEAD
+<<<<<<< HEAD
     public List<NowHumidity> getHumidityByTime(String workshop,long startTime,long endTime){
+=======
+    public List<Humidity> getHumidityByTime(String workshop,long startTime,long endTime){
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
     public List<Humidity> getHumidityByTime(String workshop,long startTime,long endTime){
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
@@ -99,7 +128,11 @@ public class DataController {
      */
     @GetMapping("/getData/getTemperatureByPage")
 <<<<<<< HEAD
+<<<<<<< HEAD
     public List<NowTemperature> getTemperatureByPage(String workshop,int startNumber,int endNumber){
+=======
+    public List<Temperature> getTemperatureByPage(String workshop,int startNumber,int endNumber){
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
     public List<Temperature> getTemperatureByPage(String workshop,int startNumber,int endNumber){
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
@@ -115,7 +148,11 @@ public class DataController {
      */
     @GetMapping("/getData/getHumidityByPage")
 <<<<<<< HEAD
+<<<<<<< HEAD
     public List<NowHumidity> getHumidityByPage(String workshop,int startNumber,int endNumber){
+=======
+    public List<Humidity> getHumidityByPage(String workshop,int startNumber,int endNumber){
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
     public List<Humidity> getHumidityByPage(String workshop,int startNumber,int endNumber){
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
@@ -159,6 +196,7 @@ public class DataController {
         return dataService.getAllWorkerNumB();
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     /**
      * 获取风险记录
@@ -227,6 +265,9 @@ public class DataController {
 =======
 
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
+
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
     /**
      * 获取全部的工厂信息
@@ -237,6 +278,7 @@ public class DataController {
         return dataService.getWorkshop();
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     /**
      * 获取在某段时间内发生对应等级的风险数量
@@ -273,6 +315,9 @@ public class DataController {
 =======
 
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
+
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
     /**
      * 获取所有产品信息
@@ -284,7 +329,10 @@ public class DataController {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     /**
      * 插入仪表读数信息
      * @param meter
@@ -308,5 +356,8 @@ public class DataController {
         return dataService.Fixed3(num);
     }
 
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 }

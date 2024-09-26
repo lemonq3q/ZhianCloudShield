@@ -22,9 +22,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<<<<<<< HEAD
-=======
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -40,7 +37,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
->>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -58,7 +54,6 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
         </dependency>
-<<<<<<< HEAD
         <!--mybatis配置-->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -72,8 +67,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-=======
-
         <!--redis-->
         <!-- 集成redis依赖  -->
         <dependency>
@@ -87,6 +80,6 @@
         </dependency>
         <!-- 使用jackson作为redis数据序列化 -->
 
->>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+
     </dependencies>
 </project>

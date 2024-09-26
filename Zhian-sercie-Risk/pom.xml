@@ -10,41 +10,13 @@
     </parent>
 
     <artifactId>Zhian-sercie-Risk</artifactId>
-<!--<<<<<<< HEAD-->
-<!--=======-->
 
-<!--&gt;>>>>>> cc6716667139555734c73a3bb2d974365344dbbd-->
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-<!--<<<<<<< HEAD-->
-<!--    <dependencies>-->
-<!--        <dependency>-->
-<!--            <groupId>org.apache.ant</groupId>-->
-<!--            <artifactId>ant</artifactId>-->
-<!--            <version>1.10.11</version>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba</groupId>-->
-<!--            <artifactId>druid</artifactId>-->
-<!--            <version>1.2.23</version>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.mybatis</groupId>-->
-<!--            <artifactId>mybatis</artifactId>-->
-<!--            <version>3.5.14</version>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework</groupId>-->
-<!--            <artifactId>spring-web</artifactId>-->
-<!--            <version>6.1.12</version>-->
-<!--            <scope>compile</scope>-->
-<!--=======-->
+
 
     <dependencies>
 
@@ -71,39 +43,19 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-<!--&gt;>>>>>> cc6716667139555734c73a3bb2d974365344dbbd-->
+
         </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>Zhian-api-commons</artifactId>
             <version>1.0-SNAPSHOT</version>
-<!--<<<<<<< HEAD-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
-<!--=======-->
         </dependency>
-
-<!--&gt;>>>>>> cc6716667139555734c73a3bb2d974365344dbbd-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.1.23</version>
         </dependency>
-<!--<<<<<<< HEAD-->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba</groupId>-->
-<!--            <artifactId>druid-spring-boot-starter</artifactId>-->
-<!--            <version>1.1.20</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework</groupId>-->
-<!--            <artifactId>spring-web</artifactId>-->
-<!--            <version>6.1.12</version>-->
-<!--            <scope>compile</scope>-->
-<!--        </dependency>-->
-<!--    </dependencies>-->
 
-<!--=======-->
         <!--mybatis配置-->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -118,5 +70,5 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
     </dependencies>
-<!--&gt;>>>>>> cc6716667139555734c73a3bb2d974365344dbbd-->
+
 </project>

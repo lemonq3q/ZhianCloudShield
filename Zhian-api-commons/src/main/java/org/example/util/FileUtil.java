@@ -12,10 +12,13 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,6 +26,9 @@ import java.nio.file.StandardCopyOption;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -160,7 +166,10 @@ public class FileUtil {
         return true;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
 
     public static byte[] fileToByte(String filename){
@@ -206,5 +215,8 @@ public class FileUtil {
     }
 
 
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 }

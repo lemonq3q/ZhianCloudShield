@@ -18,7 +18,10 @@
     </properties>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     <dependencies>
         <!-- consul配置-->
         <dependency>
@@ -69,5 +72,8 @@
         </dependency>
     </dependencies>
 
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 </project>

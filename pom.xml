@@ -19,10 +19,7 @@
         <module>Zhian-service-Model</module>
         <module>Zhian-service-device</module>
         <module>Zhian-service-info</module>
-<!--<<<<<<< HEAD-->
-<!--=======-->
         <module>Zhian-service-AI</module>
-<!--&gt;>>>>>> cc6716667139555734c73a3bb2d974365344dbbd-->
     </modules>
 
     <properties>

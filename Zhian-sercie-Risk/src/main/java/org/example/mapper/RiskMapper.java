@@ -1,10 +1,15 @@
 package org.example.mapper;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+//<<<<<<< HEAD
+//import org.apache.ibatis.annotations.Insert;
+//import org.apache.ibatis.annotations.Mapper;
+//import org.apache.ibatis.annotations.Select;
+//import org.apache.ibatis.annotations.Update;
+//import org.example.entity.Risk;
+//=======
 import org.example.entity.Risk;
+import org.apache.ibatis.annotations.*;
+//>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
 import java.util.List;
 
@@ -12,7 +17,12 @@ import java.util.List;
 public interface RiskMapper {
 
     @Insert("insert into risk(riskName,time,picPath,address,level) values(#{riskName},#{time},#{picPath},#{address},#{level})")
+//<<<<<<< HEAD
     //    @Results({
+//=======
+    public int insertRisk(Risk risk);
+//    @Results({
+//>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 //            @Result(column = "id",property = "id"),
 //            @Result(column = "time",property = "time"),
 //            @Result(column = "picPath",property = "picPath",jdbcType = JdbcType.VARCHAR),
@@ -40,7 +50,11 @@ public interface RiskMapper {
     public int deleteRisk(int id);
 
     @Select("select * from risk where address=#{workshop} and level>=#{level} order by id desc")
-    public List<Risk> getRiskByWorkshopAndLevel(String workshop, int level);
+//<<<<<<< HEAD
+//    public List<Risk> getRiskByWorkshopAndLevel(String workshop, int level);
+//=======
+    public List<Risk> getRiskByWorkshopAndLevel(String workshop,int level);
+//>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
     //返回查询到的数量
     @Select("select count(*) from risk where time between #{startTime} and #{endTime} and level=#{level}")

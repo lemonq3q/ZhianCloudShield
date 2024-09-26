@@ -18,8 +18,6 @@
     </properties>
 
     <dependencies>
-<<<<<<< HEAD
-=======
         <!-- consul配置-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -39,17 +37,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
->>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>Zhian-api-commons</artifactId>

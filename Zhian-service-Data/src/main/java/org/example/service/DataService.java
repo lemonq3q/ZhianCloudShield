@@ -1,12 +1,18 @@
 package org.example.service;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.example.test.entity.*;
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
 
 import org.example.entity.*;
 import org.springframework.web.bind.annotation.RequestBody;
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
 import java.util.List;
@@ -16,6 +22,7 @@ import java.util.Map;
 public interface DataService {
 
     //获取当前温度
+<<<<<<< HEAD
 <<<<<<< HEAD
     public NowTemperature getNowTemperature(String workshop);
 
@@ -34,6 +41,8 @@ public interface DataService {
     //分页获取湿度数据
     public List<NowHumidity> getHumidityByPage(String workshop,int startNumber,int endNumber);
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     public Temperature getNowTemperature(String workshop);
 
     //获取一段时间内的温度 between...and...
@@ -50,6 +59,9 @@ public interface DataService {
 
     //分页获取湿度数据
     public List<Humidity> getHumidityByPage(String workshop, int startNumber, int endNumber);
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
     //获取当前员工位置信息
@@ -64,6 +76,7 @@ public interface DataService {
     //获取各个厂房员工数目的数组
     public List<WorkerNum> getAllWorkerNumB();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     //分页获取风险记录
     public List<Risk> getRiskRecord(int startNumber,int endNumber);
@@ -98,6 +111,8 @@ public interface DataService {
     //厂房的产品信息
     public List<Product> getAllProduct();
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     public List<Workshop_deviceId> getWorkshop();
 
     //厂房的产品信息
@@ -108,5 +123,8 @@ public interface DataService {
     public List<Meter> getNewDataByWorkshop();
 
     public float Fixed3(float num);
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 }

@@ -1,10 +1,13 @@
 package org.example.service.impl;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.example.test.entity.*;
 import com.example.test.mapper.*;
 import com.example.test.service.DataService;
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
 import org.example.entity.*;
 import org.example.mapper.HumiditysMapper;
@@ -12,6 +15,9 @@ import org.example.mapper.MeterMapper;
 import org.example.mapper.ProductMapper;
 import org.example.mapper.TemperaturesMapper;
 import org.example.service.DataService;
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,10 +29,16 @@ import java.util.Map;
 
 @Service
 <<<<<<< HEAD
+<<<<<<< HEAD
 public class Dataimpl implements DataService {
 
     @Autowired
     private NowTemperatureMapper nowTemperatureMapper;
+=======
+public class DataImpl implements DataService {
+
+    /**private NowTemperatureMapper nowTemperatureMapper;**/
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
 public class DataImpl implements DataService {
 
@@ -37,8 +49,12 @@ public class DataImpl implements DataService {
     private TemperaturesMapper temperaturesMapper;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Autowired
     private NowHumidityMapper nowHumidityMapper;
+=======
+    /**private NowHumidityMapper nowHumidityMapper;**/
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
     /**private NowHumidityMapper nowHumidityMapper;**/
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
@@ -46,6 +62,7 @@ public class DataImpl implements DataService {
     @Autowired
     private HumiditysMapper humiditysMapper;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     @Autowired
     private NowPositionMapper nowPositionMapper;
@@ -59,6 +76,8 @@ public class DataImpl implements DataService {
     @Autowired
     private WorkerNumMapper workerNumMapper;
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     /**private NowPositionMapper nowPositionMapper;**/
 
     /**private RiskMapper riskMapper;**/
@@ -66,11 +85,15 @@ public class DataImpl implements DataService {
     /**private Workshop_deviceIdMapper workshopDeviceIdMapper;**/
 
     /**private WorkerNumMapper workerNumMapper;**/
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
     @Autowired
     private ProductMapper productMapper;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     @Override
@@ -80,6 +103,8 @@ public class DataImpl implements DataService {
         NowTemperature nowTemperature = nowTemperatureMapper.getNowTemperature(workshop);
         return nowTemperature;
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     @Autowired
     private MeterMapper meterMapper;
 
@@ -90,15 +115,24 @@ public class DataImpl implements DataService {
 //        Temperature temperature = nowTemperatureMapper.getNowTemperature(workshop);
 //        return temperature;
         return null;
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     }
 
     @Override
     //获取一段时间内的温度
 <<<<<<< HEAD
+<<<<<<< HEAD
     public List<NowTemperature> getTemperatureByTime(String workshop, long startTime, long endTime) {
         if(workshop==""||startTime==0||endTime==0) return null;
         List<NowTemperature> tempList = temperaturesMapper.getTemperatureByTime(workshop,startTime,endTime);
+=======
+    public List<Temperature> getTemperatureByTime(String workshop, long startTime, long endTime) {
+        if(workshop==""||startTime==0||endTime==0) return null;
+        List<Temperature> tempList = temperaturesMapper.getTemperatureByTime(workshop,startTime,endTime);
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
     public List<Temperature> getTemperatureByTime(String workshop, long startTime, long endTime) {
         if(workshop==""||startTime==0||endTime==0) return null;
@@ -110,25 +144,37 @@ public class DataImpl implements DataService {
     @Override
     //获取当前湿度
 <<<<<<< HEAD
+<<<<<<< HEAD
     public NowHumidity getNowHumidity(String workshop) {
         if(workshop=="")return null;
         NowHumidity nowHumidity = nowHumidityMapper.getNowHumidity(workshop);
         return nowHumidity;
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     public Humidity getNowHumidity(String workshop) {
 //        if(workshop=="")return null;
 //        Humidity humidity = nowHumidityMapper.getNowHumidity(workshop);
 //        return humidity;
         return null;
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     }
 
     @Override
     //获取一段时间内的湿度
 <<<<<<< HEAD
+<<<<<<< HEAD
     public List<NowHumidity> getHumidityByTime(String workshop, long startTime, long endTime) {
         if(workshop==""||startTime==0||endTime==0) return null;
         List<NowHumidity> humList = humiditysMapper.getTemperatureByTime(workshop,startTime,endTime);
+=======
+    public List<Humidity> getHumidityByTime(String workshop, long startTime, long endTime) {
+        if(workshop==""||startTime==0||endTime==0) return null;
+        List<Humidity> humList = humiditysMapper.getTemperatureByTime(workshop,startTime,endTime);
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
     public List<Humidity> getHumidityByTime(String workshop, long startTime, long endTime) {
         if(workshop==""||startTime==0||endTime==0) return null;
@@ -140,9 +186,15 @@ public class DataImpl implements DataService {
     @Override
     //分页查询，分页获取当前温度数据
 <<<<<<< HEAD
+<<<<<<< HEAD
     public List<NowTemperature> getTemperatureByPage(String workshop, int startNumber, int endNumber) {
         if(workshop==""||endNumber==0)return null;
         List<NowTemperature> tempList = temperaturesMapper.getTemperatureByPage(workshop,startNumber,endNumber);
+=======
+    public List<Temperature> getTemperatureByPage(String workshop, int startNumber, int endNumber) {
+        if(workshop==""||endNumber==0)return null;
+        List<Temperature> tempList = temperaturesMapper.getTemperatureByPage(workshop,startNumber,endNumber);
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
     public List<Temperature> getTemperatureByPage(String workshop, int startNumber, int endNumber) {
         if(workshop==""||endNumber==0)return null;
@@ -154,9 +206,15 @@ public class DataImpl implements DataService {
     @Override
     //分页查询，分页获取当前湿度数据
 <<<<<<< HEAD
+<<<<<<< HEAD
     public List<NowHumidity> getHumidityByPage(String workshop, int startNumber, int endNumber) {
         if(workshop==""||endNumber==0)return null;
         List<NowHumidity> humList = humiditysMapper.getHumidityByPage(workshop,startNumber,endNumber);
+=======
+    public List<Humidity> getHumidityByPage(String workshop, int startNumber, int endNumber) {
+        if(workshop==""||endNumber==0)return null;
+        List<Humidity> humList = humiditysMapper.getHumidityByPage(workshop,startNumber,endNumber);
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 =======
     public List<Humidity> getHumidityByPage(String workshop, int startNumber, int endNumber) {
         if(workshop==""||endNumber==0)return null;
@@ -202,6 +260,7 @@ public class DataImpl implements DataService {
         return numList;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     @Override
     //分页获取风险记录
@@ -261,6 +320,9 @@ public class DataImpl implements DataService {
 =======
 
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
+
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
     @Override
     //获取全部的工厂信息
@@ -269,6 +331,7 @@ public class DataImpl implements DataService {
         return workshopList;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     @Override
     //获取某段时间内发生的各个等级的风险数量
@@ -316,6 +379,8 @@ public class DataImpl implements DataService {
     }
 =======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
     @Override
     //获取所有产品信息
@@ -323,7 +388,10 @@ public class DataImpl implements DataService {
         return productMapper.getAllProduct();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 
     @Override
     public String addMeterData(Meter meter) {
@@ -366,5 +434,8 @@ public class DataImpl implements DataService {
         }
         return result+x;
     }
+<<<<<<< HEAD
+>>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
+=======
 >>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 }

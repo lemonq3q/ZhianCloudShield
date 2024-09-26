@@ -14,10 +14,8 @@ import org.example.entity.User;//所使用的实体类
 import org.example.interceptor.LoginInterceptor;
 
 import org.example.service.LoginService;
-<<<<<<< HEAD
-=======
+
 import org.example.util.RedisUtil;
->>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,12 +37,10 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-<<<<<<< HEAD
-=======
+
     @Autowired
     private RedisUtil redisUtil;
 
->>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
     //API身份验证或授权                      该值为在使用UniSMS的平台时本人身份的唯一标识
     public static String ACCESS_KEY_ID = "maLZzUmMkp8bK5FSzxE3ig6qCLYBEpfE6yoc6pvHqsGUF7Mzz";
 

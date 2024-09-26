@@ -16,9 +16,6 @@
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-<<<<<<< HEAD
-=======
     <dependencies>
         <!-- consul配置-->
         <dependency>
@@ -63,5 +60,4 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
     </dependencies>
->>>>>>> cc6716667139555734c73a3bb2d974365344dbbd
 </project>
