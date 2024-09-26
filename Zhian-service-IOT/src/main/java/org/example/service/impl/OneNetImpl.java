@@ -1,9 +1,17 @@
 package org.example.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.example.config.RabbitmqConfig;
 import org.example.entity.OldOnenetMsg;
 import org.example.entity.OnenetData;
 import org.example.service.OneNetService;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Service
@@ -13,6 +21,9 @@ public class OneNetImpl implements OneNetService {
     private static final String FINGER = "fingerid";
     private static final String TEMPERATURE = "Temp";
     private static final String HUMIDITY = "Humi";
+
+    @Autowired
+    private AmqpTemplate rabbitTemplate;
 
     @Override
     public String getAttendanceRecord(OnenetData data) {
@@ -121,7 +132,10 @@ public class OneNetImpl implements OneNetService {
 //        if(oldOnenetMsg.getAt()-temperaturesMapper.getTemperatureLastTime(workshop)>2*1000){
 //            temperaturesMapper.insertTemperature(workshop,Float.parseFloat(oldOnenetMsg.getValue()),oldOnenetMsg.getAt());
 //        }
-
+        Map<String, Object> map = new HashMap<>();
+        map.put("dev_id", oldOnenetMsg.getDev_id());
+        map.put("value", oldOnenetMsg.getValue());
+        rabbitTemplate.convertAndSend(RabbitmqConfig.TEMP_ROUTING_KEY, JSON.toJSONString(map));
     }
 
     private void HumidityHandler(OldOnenetMsg oldOnenetMsg){
@@ -135,6 +149,10 @@ public class OneNetImpl implements OneNetService {
 //        if(oldOnenetMsg.getAt()-humiditysMapper.getHumiLastTime(workshop)>2*1000){
 //            humiditysMapper.insertHumidity(workshop,Float.parseFloat(oldOnenetMsg.getValue()),oldOnenetMsg.getAt());
 //        }
+        Map<String, Object> map = new HashMap<>();
+        map.put("dev_id", oldOnenetMsg.getDev_id());
+        map.put("value", oldOnenetMsg.getValue());
+        rabbitTemplate.convertAndSend(RabbitmqConfig.HUM_ROUTING_KEY, JSON.toJSONString(map));
     }
 
     private void AttendanceHandler(OldOnenetMsg oldOnenetMsg){
@@ -143,9 +161,19 @@ public class OneNetImpl implements OneNetService {
 //            oldOnenetMsg.setValue(cardId);
 //        }
 //        AttendanceUpdate(oldOnenetMsg);
+        Map<String, Object> map = new HashMap<>();
+        map.put("dev_id", oldOnenetMsg.getDev_id());
+        map.put("ds_id", oldOnenetMsg.getDs_id());
+        map.put("value", oldOnenetMsg.getValue());
+        rabbitTemplate.convertAndSend(RabbitmqConfig.ATD_ROUTING_KEY, JSON.toJSONString(map));
     }
 
     private void DeviceHandler(OldOnenetMsg oldOnenetMsg){
+        if(oldOnenetMsg.getStatus()==1){
+            Map<String, Object> map = new HashMap<>();
+            map.put("dev_id", oldOnenetMsg.getDev_id());
+            rabbitTemplate.convertAndSend(RabbitmqConfig.ONLINE_ROUTING_KEY, JSON.toJSONString(map));
+        }
     }
 }
 

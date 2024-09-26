@@ -11,6 +11,11 @@ spring:
     password: 20040619Lmy
   profiles:
     active: dev # 多环境配置加载内容dev/prod,不写就是默认default配置
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: Feng109109
 
 # ========================mybatis===================
 mybatis:
