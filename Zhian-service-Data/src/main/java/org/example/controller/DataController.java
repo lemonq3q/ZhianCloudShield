@@ -2,6 +2,7 @@ package org.example.controller;
 
 
 import org.example.entity.*;
+import org.example.resp.ResultData;
 import org.example.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,23 +24,11 @@ public class DataController {
      * @return
      */
     @GetMapping("/getData/getNowTemperature")
-    public Temperature getNowTemperature(String workshop){
+    public ResultData getNowTemperature(String workshop){
 
-        /**return dataService.getNowTemperature(workshop);**/
-        return null;
+        return dataService.getNowTemperature(workshop);
     }
 
-    /**
-     * 获取某时间段内温度
-     * @param workshop
-     * @param startTime
-     * @param endTime
-     * @return
-     */
-    @GetMapping("/getData/getTemperatureByTime")
-    public List<Temperature> getTemperatureByTime(String workshop,long startTime,long endTime){
-        return dataService.getTemperatureByTime(workshop,startTime,endTime);
-    }
 
     /**
      * 获取当前湿度
@@ -47,21 +36,11 @@ public class DataController {
      * @return
      */
     @GetMapping("/getData/getNowHumidity")
-    public Humidity getNowHumidity(String workshop){
+    public ResultData getNowHumidity(String workshop){
         return dataService.getNowHumidity(workshop);
     }
 
-    /**
-     * 获取某时间段内湿度
-     * @param workshop
-     * @param startTime
-     * @param endTime
-     * @return
-     */
-    @GetMapping("/getData/getHumidityByTime")
-    public List<Humidity> getHumidityByTime(String workshop,long startTime,long endTime){
-        return dataService.getHumidityByTime(workshop,startTime,endTime);
-    }
+
 
     /**
      * 分页获取最近的温度
@@ -71,7 +50,7 @@ public class DataController {
      * @return
      */
     @GetMapping("/getData/getTemperatureByPage")
-    public List<Temperature> getTemperatureByPage(String workshop,int startNumber,int endNumber){
+    public ResultData getTemperatureByPage(String workshop,int startNumber,int endNumber){
         return dataService.getTemperatureByPage(workshop,startNumber,endNumber);
     }
 
@@ -83,7 +62,7 @@ public class DataController {
      * @return
      */
     @GetMapping("/getData/getHumidityByPage")
-    public List<Humidity> getHumidityByPage(String workshop,int startNumber,int endNumber){
+    public ResultData getHumidityByPage(String workshop,int startNumber,int endNumber){
         return dataService.getHumidityByPage(workshop,startNumber,endNumber);
     }
 

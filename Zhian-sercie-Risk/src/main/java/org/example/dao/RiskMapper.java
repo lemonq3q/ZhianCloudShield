@@ -1,4 +1,4 @@
-package org.example.mapper;
+package org.example.dao;
 
 import org.example.entity.Risk;
 import org.apache.ibatis.annotations.*;

@@ -1,7 +1,7 @@
 package org.example.service.impl;
 
-import org.example.mapper.DeviceModelMapper;
-import org.example.mapper.ModelMapper;
+import org.example.dao.DeviceModelMapper;
+import org.example.dao.ModelMapper;
 import org.example.entity.Model;
 import org.example.service.ModelService;
 import org.example.util.FileUtil;

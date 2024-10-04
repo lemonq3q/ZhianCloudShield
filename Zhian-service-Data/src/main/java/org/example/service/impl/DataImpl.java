@@ -1,19 +1,20 @@
 package org.example.service.impl;
 
 
+import com.alibaba.fastjson.JSON;
 import org.example.entity.*;
 import org.example.mapper.HumiditysMapper;
 import org.example.mapper.MeterMapper;
 import org.example.mapper.ProductMapper;
 import org.example.mapper.TemperaturesMapper;
+import org.example.resp.ResultData;
+import org.example.resp.ReturnCodeEnum;
 import org.example.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class DataImpl implements DataService {
@@ -42,51 +43,82 @@ public class DataImpl implements DataService {
     @Autowired
     private MeterMapper meterMapper;
 
-    @Override
-    //根据厂房号获取当前温度
-    public Temperature getNowTemperature(String workshop) {
-//        if(workshop=="") return null;
-//        Temperature temperature = nowTemperatureMapper.getNowTemperature(workshop);
-//        return temperature;
-        return null;
-    }
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Override
-    //获取一段时间内的温度
-    public List<Temperature> getTemperatureByTime(String workshop, long startTime, long endTime) {
-        if(workshop==""||startTime==0||endTime==0) return null;
-        List<Temperature> tempList = temperaturesMapper.getTemperatureByTime(workshop,startTime,endTime);
-        return tempList;
+    //根据厂房号获取当前温度
+    public ResultData getNowTemperature(String workshop) {
+        String nowTemperature = (String) redisTemplate.opsForValue().get(workshop+":now_temperature");
+        if(nowTemperature!=null){
+            Temperature result = JSON.parseObject(nowTemperature,Temperature.class);
+            return ResultData.success(result);
+        }
+        return ResultData.fail(ReturnCodeEnum.RC999.getCode(),"no temperature data of "+workshop);
     }
+
+
 
     @Override
     //获取当前湿度
-    public Humidity getNowHumidity(String workshop) {
-//        if(workshop=="")return null;
-//        Humidity humidity = nowHumidityMapper.getNowHumidity(workshop);
-//        return humidity;
-        return null;
+    public ResultData getNowHumidity(String workshop) {
+        String nowHumidity = (String) redisTemplate.opsForValue().get(workshop+":now_humidity");
+        if(nowHumidity!=null){
+            Humidity result = JSON.parseObject(nowHumidity,Humidity.class);
+            return ResultData.success(result);
+        }
+        return ResultData.fail(ReturnCodeEnum.RC999.getCode(),"no humidity data of "+workshop);
     }
 
-    @Override
-    //获取一段时间内的湿度
-    public List<Humidity> getHumidityByTime(String workshop, long startTime, long endTime) {
-        if(workshop==""||startTime==0||endTime==0) return null;
-        List<Humidity> humList = humiditysMapper.getTemperatureByTime(workshop,startTime,endTime);
-        return humList;
-    }
 
     @Override
     //分页查询，分页获取当前温度数据
-    public List<Temperature> getTemperatureByPage(String workshop, int startNumber, int endNumber) {
-        if(workshop==""||endNumber==0)return null;
-        List<Temperature> tempList = temperaturesMapper.getTemperatureByPage(workshop,startNumber,endNumber);
-        return tempList;
+    public ResultData getTemperatureByPage(String workshop, int startNumber, int endNumber) {
+        Set<String> idSet = redisTemplate.opsForZSet().reverseRange(workshop+":temperature_id",startNumber,endNumber);
+        //不存在该页数据
+        if(idSet.size()<1){
+            return ResultData.fail(ReturnCodeEnum.RC999.getCode(),"no temperature data of "+workshop);
+        }
+        List<String> resultList = redisTemplate.opsForValue().multiGet(idSet);
+        //存储不存在的id
+        List<Integer> missingIds = new ArrayList<>();
+        for(String result : resultList){
+            String id = idSet.iterator().next();
+            if(result == null){
+                missingIds.add(Integer.parseInt(id));
+            }
+        }
+        //声明返回结果
+        List<Temperature> temperaturesList = new ArrayList<>();
+        if(missingIds.size()>0){
+            List<Temperature> missingResult = temperaturesMapper.getTemperatureByIdList(missingIds);
+            //将数据批量存入redis
+            Map<String,String> redisData = new HashMap<>();
+            for(Temperature result : missingResult){
+                redisData.put(Integer.toString(result.getId()), JSON.toJSONString(result));
+            }
+            redisTemplate.opsForValue().multiSet(redisData);
+
+            for(int i=0 ; i<resultList.size(); i++){
+                if(resultList.get(i)==null){
+                    temperaturesList.add(missingResult.iterator().next());
+                }
+                else{
+                    temperaturesList.add(JSON.parseObject(resultList.get(i), Temperature.class));
+                }
+            }
+        }
+        else{
+            for(int i=0 ; i<resultList.size(); i++){
+                temperaturesList.add(JSON.parseObject(resultList.get(i), Temperature.class));
+            }
+        }
+        return ResultData.success(temperaturesList);
     }
 
     @Override
     //分页查询，分页获取当前湿度数据
-    public List<Humidity> getHumidityByPage(String workshop, int startNumber, int endNumber) {
+    public ResultData getHumidityByPage(String workshop, int startNumber, int endNumber) {
         if(workshop==""||endNumber==0)return null;
         List<Humidity> humList = humiditysMapper.getHumidityByPage(workshop,startNumber,endNumber);
         return humList;

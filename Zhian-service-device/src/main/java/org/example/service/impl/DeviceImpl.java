@@ -1,11 +1,10 @@
 package org.example.service.impl;
 
-import jakarta.annotation.Resource;
 import org.example.api.ModelApi;
 import org.example.entity.Device;
 import org.example.resp.ResultData;
 import org.example.service.DeviceService;
-import org.example.mapper.DeviceMapper;
+import org.example.dao.DeviceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

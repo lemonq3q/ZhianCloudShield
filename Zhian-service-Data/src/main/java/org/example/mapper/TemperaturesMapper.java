@@ -26,4 +26,6 @@ public interface TemperaturesMapper {
 
     @Select("select time from temperatures where workshop=#{workshop} order by time desc limit 0,1")
     public long getTemperatureLastTime(String workshop);
+
+    public List<Temperature> getTemperatureByIdList(List<Integer> idList);
 }

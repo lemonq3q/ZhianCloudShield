@@ -1,5 +1,5 @@
 //mapper文件用于操作数据库
-package org.example.mapper;
+package org.example.dao;
 
 
 import org.example.entity.Attendance;

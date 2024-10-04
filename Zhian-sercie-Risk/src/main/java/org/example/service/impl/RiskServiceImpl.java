@@ -6,7 +6,7 @@ import org.example.resp.ReturnCodeEnum;
 import org.example.service.RiskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.example.mapper.RiskMapper;
+import org.example.dao.RiskMapper;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

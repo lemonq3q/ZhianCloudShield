@@ -1,11 +1,9 @@
 package org.example.mq;
 
 import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.databind.JsonSerializable;
 import com.rabbitmq.client.Channel;
 import org.example.api.DeviceApi;
 import org.example.config.RabbitmqConfig;
-import org.example.entity.OldOnenetMsg;
 import org.example.mapper.HumiditysMapper;
 import org.example.mapper.TemperaturesMapper;
 import org.springframework.amqp.core.Message;
@@ -13,7 +11,6 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.security.Timestamp;
 import java.util.Map;
 
 @Component

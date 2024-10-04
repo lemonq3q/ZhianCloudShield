@@ -8,7 +8,7 @@ import com.apistd.uni.sms.UniMessage;
 import com.apistd.uni.sms.UniSMS;
 import org.example.entity.User;
 import org.example.interceptor.LoginInterceptor;
-import org.example.mapper.UserMapper;
+import org.example.dao.UserMapper;
 import org.example.util.LoginUtil;
 import org.example.resp.ResponseMessage;
 import org.example.service.LoginService;

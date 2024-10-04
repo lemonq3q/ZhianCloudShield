@@ -3,8 +3,8 @@ package org.example.service.impl;
 
 import org.example.entity.InspectPoint;
 import org.example.entity.Region;
-import org.example.mapper.InspectPointMapper;
-import org.example.mapper.RegionMapper;
+import org.example.dao.InspectPointMapper;
+import org.example.dao.RegionMapper;
 import org.example.resp.ResponseMessage;
 import org.example.service.RosService;
 import org.springframework.beans.factory.annotation.Autowired;
