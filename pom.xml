@@ -20,6 +20,7 @@
         <module>Zhian-service-device</module>
         <module>Zhian-service-info</module>
         <module>Zhian-service-AI</module>
+        <module>Zhian-service-user</module>
     </modules>
 
     <properties>
