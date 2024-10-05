@@ -31,9 +31,7 @@ public class FileDataService_impl extends UnicastRemoteObject implements FileDat
     }
 
     @Override
-    public byte[] getFile(String filename) throws RemoteException {
-        String filePath = "E:/test/img/".concat(filename);
-        System.out.println(filePath);
+    public byte[] getFile(String filePath) throws RemoteException {
         return FileUtil.fileToByte(filePath);
     }
 }

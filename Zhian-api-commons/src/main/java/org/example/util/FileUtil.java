@@ -22,6 +22,11 @@ import java.util.Enumeration;
 import java.util.Iterator;
 
 public class FileUtil {
+
+    public final static String IMAGE_SAVE_PATH = "*****";
+
+    public final static String MODEL_SAVE_PATH = "******";
+
     public static void main(String[] args) {
         try {
             String inPath = "E:/CodeTest/user6.png";
@@ -183,10 +188,10 @@ public class FileUtil {
         }
     }
 
-    public static boolean downloadFile(String savePath,String filename){
+    public static boolean downloadFile(String savePath,String filePath){
         try {
             FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://localhost:9001/FileDataService");
-            byte[] fileData = fileDataService.getFile(filename);
+            byte[] fileData = fileDataService.getFile(filePath);
             FileOutputStream fos = new FileOutputStream(savePath);
             fos.write(fileData);
             fos.close();
