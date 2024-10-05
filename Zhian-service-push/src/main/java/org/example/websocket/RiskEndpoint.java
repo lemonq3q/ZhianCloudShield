@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @ServerEndpoint(value = "/login/{userid}")
 
 @Component
-public class LogEndpoint {
+public class RiskEndpoint {
     public static final Map<String, Session> onlineUsers = new ConcurrentHashMap<>();
 
     private String userid;

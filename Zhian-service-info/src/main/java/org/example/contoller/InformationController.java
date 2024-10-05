@@ -197,12 +197,6 @@ public class InformationController {
     }
 
     public static void main(String[] args) {
-//        long startTime = 1712419201;
-//        long endTime = 1712505601;
-//
-//        Timestamp startDate = new Timestamp(startTime);
-//        Timestamp endDate = new Timestamp(endTime);
-//        List<Employee_attendance> attendanceList = attendanceMapper.getAttendanceById(64,startDate,endDate);
-//        System.out.println(attendanceList.toString());
+
     }
 }
