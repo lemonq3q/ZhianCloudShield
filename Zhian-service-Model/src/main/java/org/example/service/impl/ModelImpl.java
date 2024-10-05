@@ -3,6 +3,8 @@ package org.example.service.impl;
 import org.example.dao.DeviceModelMapper;
 import org.example.dao.ModelMapper;
 import org.example.entity.Model;
+import org.example.resp.ResultData;
+import org.example.resp.ReturnCodeEnum;
 import org.example.service.ModelService;
 import org.example.util.FileUtil;
 import org.example.util.ScriptExecutor;
@@ -33,9 +35,9 @@ public class ModelImpl implements ModelService {
 
     @Override
     //根据设备号获取
-    public List<Model> getModelByDevice(String device_id) {
-        if(device_id == null) return null;
-        return modelMapper.getModelByDevice(device_id);
+    public ResultData getModelByDevice(String device_id) {
+        if(device_id == null) return ResultData.fail(ReturnCodeEnum.RC999.getCode(),"device_id is null");
+        return ResultData.success(modelMapper.getModelByDevice(device_id));
     }
 
     @Override

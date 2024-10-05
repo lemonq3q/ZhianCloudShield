@@ -1,6 +1,7 @@
 package org.example.service;
 
 import org.example.entity.Model;
+import org.example.resp.ResultData;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,7 +12,7 @@ public interface ModelService {
 
     public List<Model> getAll();
 
-    public List<Model> getModelByDevice(String device_id);
+    public ResultData getModelByDevice(String device_id);
 
     public String addDeviceModel(String device_id, @RequestBody int[] modelArray);
 

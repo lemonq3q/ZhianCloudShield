@@ -1,6 +1,8 @@
 package org.example.controller;
 
 import org.example.resp.ResultData;
+import org.example.service.AIService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,22 +14,12 @@ import java.io.InputStream;
 @RestController
 public class AIController {
 
+    @Autowired
+    private AIService aiService;
+
     @PostMapping("/AI/detectTest")
     public ResultData PictureDetect(@RequestParam("file") MultipartFile file,@RequestParam("name") String name,@RequestParam("model") Integer id){
-        String picName = file.getName().split(".")[1];
-        String PATH = "..."+picName;
-        try {
-            File filePath = new File (PATH);
-            file.getBytes();
-            file.transferTo(filePath);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return null;
+        return aiService.PictureDetect(file,name,id);
     }
 
-    @PostMapping("/AI/imgSave")
-    public ResultData ImgSave(@RequestParam("file")MultipartFile file,@RequestParam("name") String picName){
-        return null;
-    }
 }

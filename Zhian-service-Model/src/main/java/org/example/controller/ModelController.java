@@ -2,6 +2,7 @@ package org.example.controller;
 
 import org.apache.ibatis.annotations.Delete;
 import org.example.entity.Model;
+import org.example.resp.ResultData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,7 +31,7 @@ public class ModelController {
      * @return
      */
     @GetMapping("/model/getModelByDevice")
-    public List<Model> getModelByDevice(String device_id){
+    public ResultData getModelByDevice(String device_id){
         return modelService.getModelByDevice(device_id);
     }
 
