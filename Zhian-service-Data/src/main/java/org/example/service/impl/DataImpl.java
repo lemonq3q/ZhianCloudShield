@@ -76,42 +76,58 @@ public class DataImpl implements DataService {
     public ResultData getTemperatureByPage(String workshop, int startNumber, int endNumber) {
         Set<String> idSet = redisTemplate.opsForZSet().reverseRange(workshop+":temperature_id",startNumber,endNumber);
         //不存在该页数据
-        if(idSet.size()<1){
+        if(idSet==null || idSet.size()<1){
             return ResultData.fail(ReturnCodeEnum.RC999.getCode(),"no temperature data of "+workshop);
         }
         List<String> resultList = redisTemplate.opsForValue().multiGet(idSet);
+        //存储存在的结果
+        List<Temperature> existResult = new ArrayList<>();
         //存储不存在的id
         List<Integer> missingIds = new ArrayList<>();
         for(String result : resultList){
             String id = idSet.iterator().next();
             if(result == null){
-                missingIds.add(Integer.parseInt(id));
+                missingIds.add(Integer.parseInt(id.split(":")[1]));
+            }
+            else {
+                existResult.add(JSON.parseObject(result,Temperature.class));
             }
         }
         //声明返回结果
         List<Temperature> temperaturesList = new ArrayList<>();
+        List<Temperature> missingResult = new ArrayList<>();
         if(missingIds.size()>0){
-            List<Temperature> missingResult = temperaturesMapper.getTemperatureByIdList(missingIds);
+            missingResult = temperaturesMapper.getTemperatureByIdList(missingIds);
             //将数据批量存入redis
             Map<String,String> redisData = new HashMap<>();
             for(Temperature result : missingResult){
-                redisData.put(Integer.toString(result.getId()), JSON.toJSONString(result));
+                redisData.put("temperature:"+result.getId(), JSON.toJSONString(result));
             }
             redisTemplate.opsForValue().multiSet(redisData);
-
-            for(int i=0 ; i<resultList.size(); i++){
-                if(resultList.get(i)==null){
-                    temperaturesList.add(missingResult.iterator().next());
+        }
+        //合并该页结果
+        Iterator<Temperature> iterator = missingResult.iterator();
+        Temperature missingTmp = null;
+        if(iterator.hasNext()){
+            missingTmp = iterator.next();
+        }
+        for (int i = 0; i < existResult.size();) {
+            if(missingTmp!=null && missingTmp.getId()>=existResult.get(i).getId()){
+                temperaturesList.add(missingTmp);
+                if(iterator.hasNext()){
+                    missingTmp = iterator.next();
                 }
                 else{
-                    temperaturesList.add(JSON.parseObject(resultList.get(i), Temperature.class));
+                    missingTmp = null;
                 }
             }
-        }
-        else{
-            for(int i=0 ; i<resultList.size(); i++){
-                temperaturesList.add(JSON.parseObject(resultList.get(i), Temperature.class));
+            else{
+                temperaturesList.add(existResult.get(i));
+                i++;
             }
+        }
+        while(iterator.hasNext()){
+            temperaturesList.add(iterator.next());
         }
         return ResultData.success(temperaturesList);
     }
@@ -119,9 +135,62 @@ public class DataImpl implements DataService {
     @Override
     //分页查询，分页获取当前湿度数据
     public ResultData getHumidityByPage(String workshop, int startNumber, int endNumber) {
-        if(workshop==""||endNumber==0)return null;
-        List<Humidity> humList = humiditysMapper.getHumidityByPage(workshop,startNumber,endNumber);
-        return humList;
+        Set<String> idSet = redisTemplate.opsForZSet().reverseRange(workshop+":humidity_id",startNumber,endNumber);
+        //不存在该页数据
+        if(idSet==null || idSet.size()<1){
+            return ResultData.fail(ReturnCodeEnum.RC999.getCode(),"no humidity data of "+workshop);
+        }
+        List<String> resultList = redisTemplate.opsForValue().multiGet(idSet);
+        //存储存在的结果
+        List<Humidity> existResult = new ArrayList<>();
+        //存储不存在的id
+        List<Integer> missingIds = new ArrayList<>();
+        for(String result : resultList){
+            String id = idSet.iterator().next();
+            if(result == null){
+                missingIds.add(Integer.parseInt(id.split(":")[1]));
+            }
+            else {
+                existResult.add(JSON.parseObject(result,Humidity.class));
+            }
+        }
+        //声明返回结果
+        List<Humidity> humiditiesList = new ArrayList<>();
+        List<Humidity> missingResult = new ArrayList<>();
+        if(missingIds.size()>0){
+            missingResult = humiditysMapper.getHumidityByIdList(missingIds);
+            //将数据批量存入redis
+            Map<String,String> redisData = new HashMap<>();
+            for(Humidity result : missingResult){
+                redisData.put("humidity:"+result.getId(), JSON.toJSONString(result));
+            }
+            redisTemplate.opsForValue().multiSet(redisData);
+        }
+        //合并该页结果
+        Iterator<Humidity> iterator = missingResult.iterator();
+        Humidity missingTmp = null;
+        if(iterator.hasNext()){
+            missingTmp = iterator.next();
+        }
+        for (int i = 0; i < existResult.size();) {
+            if(missingTmp!=null && missingTmp.getId()>=existResult.get(i).getId()){
+                humiditiesList.add(missingTmp);
+                if(iterator.hasNext()){
+                    missingTmp = iterator.next();
+                }
+                else{
+                    missingTmp = null;
+                }
+            }
+            else{
+                humiditiesList.add(existResult.get(i));
+                i++;
+            }
+        }
+        while(iterator.hasNext()){
+            humiditiesList.add(iterator.next());
+        }
+        return ResultData.success(humiditiesList);
     }
 
     @Override

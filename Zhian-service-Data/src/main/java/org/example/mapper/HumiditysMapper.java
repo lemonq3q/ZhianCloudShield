@@ -23,4 +23,6 @@ public interface HumiditysMapper {
 
     @Select("select time from humiditys where workshop=#{workshop} order by time desc limit 0,1")
     public long getHumiLastTime(String workshop);
+
+    public List<Humidity> getHumidityByIdList(List<Integer> idList);
 }

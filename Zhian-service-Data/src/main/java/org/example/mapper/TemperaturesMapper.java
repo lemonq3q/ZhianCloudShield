@@ -17,8 +17,7 @@ public interface TemperaturesMapper {
     @Select("select * from temperatures where workshop=#{workshop} and time between #{startTime} and #{endTime} order by time desc")
     public List<Temperature> getTemperatureByTime(String workshop, long startTime, long endTime);
 
-    @Insert("insert into temperatures values (#{workshop},#{time},#{temperature})")
-    public int insertTemperature(String workshop,float temperature,long time);
+    public int insertTemperature(Temperature temperature);
 
     //查询结果的位置 查询结果的数量
     @Select("select * from temperatures where workshop=#{workshop} order by time desc limit #{startNumber},#{endNumber}")
