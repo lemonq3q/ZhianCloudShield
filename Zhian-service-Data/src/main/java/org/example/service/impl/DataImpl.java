@@ -11,6 +11,7 @@ import org.example.mapper.TemperaturesMapper;
 import org.example.resp.ResultData;
 import org.example.resp.ReturnCodeEnum;
 import org.example.service.DataService;
+import org.example.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -101,13 +102,15 @@ public class DataImpl implements DataService {
         List<Temperature> temperaturesList = new ArrayList<>();
         List<Temperature> missingResult = new ArrayList<>();
         if(missingIds.size()>0){
+            //获取不存在的id对应的数据
+            System.out.println("查询mysql");
             missingResult = temperaturesMapper.getTemperatureByIdList(missingIds);
             //将数据批量存入redis
             Map<String,String> redisData = new HashMap<>();
             for(Temperature result : missingResult){
                 redisData.put("temperature:"+result.getId(), JSON.toJSONString(result));
             }
-            redisTemplate.opsForValue().multiSet(redisData);
+            RedisUtil.multiSetValue(redisTemplate,redisData,2000);
         }
         //合并该页结果
         Iterator<Temperature> iterator = missingResult.iterator();
@@ -164,13 +167,15 @@ public class DataImpl implements DataService {
         List<Humidity> humiditiesList = new ArrayList<>();
         List<Humidity> missingResult = new ArrayList<>();
         if(missingIds.size()>0){
+            //获取不存在的id对应的数据
+            System.out.println("查询mysql");
             missingResult = humiditysMapper.getHumidityByIdList(missingIds);
             //将数据批量存入redis
             Map<String,String> redisData = new HashMap<>();
             for(Humidity result : missingResult){
                 redisData.put("humidity:"+result.getId(), JSON.toJSONString(result));
             }
-            redisTemplate.opsForValue().multiSet(redisData);
+            RedisUtil.multiSetValue(redisTemplate,redisData,2000);
         }
         //合并该页结果
         Iterator<Humidity> iterator = missingResult.iterator();
