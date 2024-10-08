@@ -25,8 +25,11 @@ public class DBHeartBeat {
     @Scheduled(fixedDelay = 5000) // 每隔5秒执行一次
     public void checkDatabaseStatus() {
         DBContextHolder.setDBAvailableMap(DBTypeEnum.MASTER,isDatabaseAvailable(masterDataSource));
+        System.out.println("master数据库可用性："+DBContextHolder.getDBAvailableMap(DBTypeEnum.MASTER));
         DBContextHolder.setDBAvailableMap(DBTypeEnum.SLAVE1,isDatabaseAvailable(slave1DataSource));
+        System.out.println("slave1数据库可用性："+DBContextHolder.getDBAvailableMap(DBTypeEnum.SLAVE1));
         DBContextHolder.setDBAvailableMap(DBTypeEnum.SLAVE2,isDatabaseAvailable(slave2DataSource));
+        System.out.println("slave2数据库可用性："+DBContextHolder.getDBAvailableMap(DBTypeEnum.SLAVE2));
     }
 
     private boolean isDatabaseAvailable(DataSource dataSource) {

@@ -1,7 +1,7 @@
 package org.example.mapper;
 
+import org.apache.ibatis.annotations.Update;
 import org.example.entity.Temperature;
-import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -26,5 +26,20 @@ public interface TemperaturesMapper {
     @Select("select time from temperatures where workshop=#{workshop} order by time desc limit 0,1")
     public long getTemperatureLastTime(String workshop);
 
+    @Select("select * from temperatures where id = 1")
+    public Temperature getTest();
+
+    @Update("update temperatures set temperature = #{temperature} where id = 1")
+    public int updateTest(float temperature);
+
     public List<Temperature> getTemperatureByIdList(List<Integer> idList);
+
+    @Select("select id from temperatures where workshop = #{workshop} order by id desc")
+    public List<Integer> getIdList(String workshop);
+
+    @Select("select distinct workshop from temperatures")
+    public List<String> getWorkshopList();
+
+    @Select("select * from temperatures where workshop = #{workshop} order by id desc limit 1")
+    public Temperature getLastTemperatureByWorkshop(String workshop);
 }

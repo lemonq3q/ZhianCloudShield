@@ -22,6 +22,10 @@ public class DBContextHolder {
         DBAvailableMap.put(dbTypeEnum,available);
     }
 
+    public static Boolean getDBAvailableMap(DBTypeEnum dbTypeEnum){
+        return DBAvailableMap.get(dbTypeEnum);
+    }
+
     public static void master() {
         set(DBTypeEnum.MASTER);
         System.out.println("切换到"+DBTypeEnum.MASTER);

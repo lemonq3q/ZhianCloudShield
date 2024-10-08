@@ -1,7 +1,7 @@
 package org.example.service.impl;
 
 import com.alibaba.fastjson.JSON;
-import org.example.config.RabbitmqConfig;
+import org.example.config.RabbitmqNameConfig;
 import org.example.entity.OldOnenetMsg;
 import org.example.entity.OnenetData;
 import org.example.service.OneNetService;
@@ -65,7 +65,7 @@ public class OneNetImpl implements OneNetService {
         map.put("dev_id", oldOnenetMsg.getDev_id());
         map.put("value", oldOnenetMsg.getValue());
         map.put("at", oldOnenetMsg.getAt());
-        rabbitTemplate.convertAndSend(RabbitmqConfig.TEMP_ROUTING_KEY, JSON.toJSONString(map));
+        rabbitTemplate.convertAndSend(RabbitmqNameConfig.TEMP_ROUTING_KEY, JSON.toJSONString(map));
     }
 
     private void HumidityHandler(OldOnenetMsg oldOnenetMsg){
@@ -73,7 +73,7 @@ public class OneNetImpl implements OneNetService {
         map.put("dev_id", oldOnenetMsg.getDev_id());
         map.put("value", oldOnenetMsg.getValue());
         map.put("at", oldOnenetMsg.getAt());
-        rabbitTemplate.convertAndSend(RabbitmqConfig.HUM_ROUTING_KEY, JSON.toJSONString(map));
+        rabbitTemplate.convertAndSend(RabbitmqNameConfig.HUM_ROUTING_KEY, JSON.toJSONString(map));
     }
 
     private void AttendanceHandler(OldOnenetMsg oldOnenetMsg){
@@ -82,7 +82,7 @@ public class OneNetImpl implements OneNetService {
         map.put("ds_id", oldOnenetMsg.getDs_id());
         map.put("value", oldOnenetMsg.getValue());
         map.put("at", oldOnenetMsg.getAt());
-        rabbitTemplate.convertAndSend(RabbitmqConfig.ATD_ROUTING_KEY, JSON.toJSONString(map));
+        rabbitTemplate.convertAndSend(RabbitmqNameConfig.ATD_ROUTING_KEY, JSON.toJSONString(map));
     }
 
     private void DeviceHandler(OldOnenetMsg oldOnenetMsg){
@@ -90,7 +90,7 @@ public class OneNetImpl implements OneNetService {
             Map<String, Object> map = new HashMap<>();
             map.put("dev_id", oldOnenetMsg.getDev_id());
             map.put("at", oldOnenetMsg.getAt());
-            rabbitTemplate.convertAndSend(RabbitmqConfig.ONLINE_ROUTING_KEY, JSON.toJSONString(map));
+            rabbitTemplate.convertAndSend(RabbitmqNameConfig.ONLINE_ROUTING_KEY, JSON.toJSONString(map));
         }
     }
 }

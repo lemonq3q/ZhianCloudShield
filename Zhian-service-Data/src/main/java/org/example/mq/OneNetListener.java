@@ -3,7 +3,7 @@ package org.example.mq;
 import com.alibaba.fastjson.JSON;
 import com.rabbitmq.client.Channel;
 import org.example.api.DeviceApi;
-import org.example.config.RabbitmqConfig;
+import org.example.config.RabbitmqNameConfig;
 import org.example.entity.Humidity;
 import org.example.entity.Temperature;
 import org.example.mapper.HumiditysMapper;
@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Component
-public class OneNetListener extends RabbitmqConfig {
+public class OneNetListener extends RabbitmqNameConfig {
 
     @Autowired
     DeviceApi deviceApi;

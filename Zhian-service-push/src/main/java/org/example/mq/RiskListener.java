@@ -3,7 +3,7 @@ package org.example.mq;
 import com.alibaba.fastjson.JSON;
 import com.rabbitmq.client.Channel;
 import org.example.api.RiskAPi;
-import org.example.config.RabbitmqConfig;
+import org.example.config.RabbitmqNameConfig;
 import org.example.entity.Risk;
 import org.example.websocket.RiskEndpoint;
 import org.springframework.amqp.core.Message;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RiskListener extends RabbitmqConfig {
+public class RiskListener extends RabbitmqNameConfig {
 
     @Autowired
     private RiskAPi riskAPi;

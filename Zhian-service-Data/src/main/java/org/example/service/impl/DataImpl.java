@@ -2,6 +2,7 @@ package org.example.service.impl;
 
 
 import com.alibaba.fastjson.JSON;
+import org.example.annotation.Slave;
 import org.example.entity.*;
 import org.example.mapper.HumiditysMapper;
 import org.example.mapper.MeterMapper;
@@ -15,6 +16,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class DataImpl implements DataService {
@@ -72,6 +74,7 @@ public class DataImpl implements DataService {
 
 
     @Override
+    @Slave
     //分页查询，分页获取当前温度数据
     public ResultData getTemperatureByPage(String workshop, int startNumber, int endNumber) {
         Set<String> idSet = redisTemplate.opsForZSet().reverseRange(workshop+":temperature_id",startNumber,endNumber);
@@ -84,8 +87,9 @@ public class DataImpl implements DataService {
         List<Temperature> existResult = new ArrayList<>();
         //存储不存在的id
         List<Integer> missingIds = new ArrayList<>();
+        Iterator<String> idSetIterator = idSet.iterator();
         for(String result : resultList){
-            String id = idSet.iterator().next();
+            String id = idSetIterator.next();
             if(result == null){
                 missingIds.add(Integer.parseInt(id.split(":")[1]));
             }
@@ -133,6 +137,7 @@ public class DataImpl implements DataService {
     }
 
     @Override
+    @Slave
     //分页查询，分页获取当前湿度数据
     public ResultData getHumidityByPage(String workshop, int startNumber, int endNumber) {
         Set<String> idSet = redisTemplate.opsForZSet().reverseRange(workshop+":humidity_id",startNumber,endNumber);
@@ -145,8 +150,9 @@ public class DataImpl implements DataService {
         List<Humidity> existResult = new ArrayList<>();
         //存储不存在的id
         List<Integer> missingIds = new ArrayList<>();
+        Iterator<String> idSetIterator = idSet.iterator();
         for(String result : resultList){
-            String id = idSet.iterator().next();
+            String id = idSetIterator.next();
             if(result == null){
                 missingIds.add(Integer.parseInt(id.split(":")[1]));
             }
@@ -222,4 +228,6 @@ public class DataImpl implements DataService {
         }
         return result+x;
     }
+
+
 }

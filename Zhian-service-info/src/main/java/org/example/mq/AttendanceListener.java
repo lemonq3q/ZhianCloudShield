@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.rabbitmq.client.Channel;
 import org.example.api.DeviceApi;
 import org.example.api.PushApi;
-import org.example.config.RabbitmqConfig;
+import org.example.config.RabbitmqNameConfig;
 import org.example.dao.AttendanceMapper;
 import org.example.dao.EmployeeMapper;
 import org.example.dao.NowPositionMapper;
@@ -19,7 +19,7 @@ import java.sql.Timestamp;
 import java.util.Map;
 
 @Component
-public class AttendanceListener extends RabbitmqConfig {
+public class AttendanceListener extends RabbitmqNameConfig {
 
     private static final String ID = "id";
     private static final String FINGER = "fingerid";

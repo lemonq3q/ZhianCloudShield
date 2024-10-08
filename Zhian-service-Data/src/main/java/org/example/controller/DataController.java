@@ -1,10 +1,14 @@
 package org.example.controller;
 
 
+import org.example.annotation.Master;
+import org.example.annotation.Slave;
 import org.example.entity.*;
+import org.example.mapper.TemperaturesMapper;
 import org.example.resp.ResultData;
 import org.example.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.Position;
@@ -16,6 +20,8 @@ public class DataController {
 
     @Autowired
     private DataService dataService;
+    @Autowired
+    private TemperaturesMapper temperaturesMapper;
 
 
     /**
@@ -74,6 +80,19 @@ public class DataController {
     public List<Meter> getNewDataByWorkshop(){
         return dataService.getNewDataByWorkshop();
     }
+
+    @GetMapping("/data/getTest")
+    @Slave
+    public ResultData getTest(){
+        return ResultData.success(temperaturesMapper.getTest());
+    }
+
+    @Master
+    @PostMapping("/data/postTest")
+    public ResultData postTest(float temperature){
+        return ResultData.success(temperaturesMapper.updateTest(temperature));
+    }
+
 
     public float Fixed3(float num){
         return dataService.Fixed3(num);

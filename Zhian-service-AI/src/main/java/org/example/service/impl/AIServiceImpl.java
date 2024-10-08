@@ -1,6 +1,6 @@
 package org.example.service.impl;
 
-import org.example.config.RabbitmqConfig;
+import org.example.config.RabbitmqNameConfig;
 import org.example.resp.ResultData;
 import org.example.service.AIService;
 import org.example.util.FileUtil;
@@ -37,7 +37,7 @@ public class AIServiceImpl implements AIService {
                     return message;
                 }
             };
-            rabbitTemplate.convertAndSend(RabbitmqConfig.DETECT_EXCHANGE,"Model"+id,imageData,messagePostProcessor);
+            rabbitTemplate.convertAndSend(RabbitmqNameConfig.DETECT_EXCHANGE,"Model"+id,imageData,messagePostProcessor);
         } catch (IOException e) {
             return ResultData.fail("500","image read failed");
         }

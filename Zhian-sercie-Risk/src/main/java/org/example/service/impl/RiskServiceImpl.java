@@ -1,5 +1,7 @@
 package org.example.service.impl;
 
+import org.example.annotation.Master;
+import org.example.annotation.Slave;
 import org.example.entity.Risk;
 import org.example.resp.ResultData;
 import org.example.resp.ReturnCodeEnum;
@@ -7,6 +9,8 @@ import org.example.service.RiskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.example.dao.RiskMapper;
+import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +40,7 @@ public class RiskServiceImpl implements RiskService {
     @Override
     //根据风险编号查询
     public Risk getRiskById(int id) {
-        if(id==0)return null;
+        if(id==0) return null;
         Risk risk = riskMapper.getRiskById(id);
         return risk;
     }
