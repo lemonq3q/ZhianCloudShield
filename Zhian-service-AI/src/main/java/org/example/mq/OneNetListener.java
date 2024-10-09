@@ -2,13 +2,13 @@ package org.example.mq;
 
 import com.alibaba.fastjson.JSON;
 import com.rabbitmq.client.Channel;
-import jakarta.annotation.Resource;
 import org.example.api.ModelApi;
 import org.example.config.RabbitmqNameConfig;
 import org.example.entity.Model;
 import org.example.util.FileUtil;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -18,7 +18,7 @@ import java.util.Map;
 @Component
 public class OneNetListener extends RabbitmqNameConfig {
 
-    @Resource
+    @Autowired
     ModelApi modelApi;
 
     private final static String LOCAL_MODEL_PATH = "****";

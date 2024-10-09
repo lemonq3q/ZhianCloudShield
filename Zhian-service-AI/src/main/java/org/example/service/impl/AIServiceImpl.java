@@ -24,7 +24,7 @@ public class AIServiceImpl implements AIService {
 
     private final static String IMAGE = "image";
     private final static String MODEL = "model";
-    private final static String TMP_SAVE_PATH = "****";
+    private final static String TMP_SAVE_PATH = "E:/CodeTest/file_save/tmp_image";
 
     @Override
     public ResultData PictureDetect(MultipartFile file, String name, Integer id) {
@@ -48,12 +48,13 @@ public class AIServiceImpl implements AIService {
     @Override
     public ResultData updateFile(MultipartFile file, String name, String type) {
         try {
-            file.transferTo(new File(TMP_SAVE_PATH+name));
+            System.out.println(TMP_SAVE_PATH+"/"+name);
+            file.transferTo(new File(TMP_SAVE_PATH+"/"+name));
             if(type.equals(IMAGE)){
-                FileUtil.uploadFile(FileUtil.IMAGE_SAVE_PATH+name,TMP_SAVE_PATH+name);
+                FileUtil.uploadFile(FileUtil.IMAGE_SAVE_PATH+"/"+name,TMP_SAVE_PATH+"/"+name);
             }
             else if(type.equals(MODEL)){
-                FileUtil.uploadFile(FileUtil.MODEL_SAVE_PATH+name,TMP_SAVE_PATH+name);
+                FileUtil.uploadFile(FileUtil.MODEL_SAVE_PATH+"/"+name,TMP_SAVE_PATH+"/"+name);
             }
         } catch (IOException e) {
             return ResultData.fail("500","file save failed");

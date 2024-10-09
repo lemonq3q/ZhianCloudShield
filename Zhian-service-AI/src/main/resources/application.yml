@@ -1,14 +1,27 @@
 server:
-  port: 8001
+  port: 8007
 
 # ==========applicationName + druid-mysql8 driver===================
 spring:
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/demondb?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
-    username: root
-    password: 20040619Lmy
+    master:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/demondb?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+      username: root
+      password: 20040619Lmy
+    slave1:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3307/demondb?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+      username: root
+      password: 20040619Lmy
+    slave2:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://26.116.9.136:3307/demondb?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+      username: root
+      password: 111111
   profiles:
     active: dev # 多环境配置加载内容dev/prod,不写就是默认default配置
 
@@ -24,11 +37,11 @@ spring:
         prefetch: 100
 
 # ========================mybatis===================
-mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: org.example.entity
-  configuration:
-    map-underscore-to-camel-case: true
+#mybatis:
+#  mapper-locations: classpath:mapper/*.xml
+#  type-aliases-package: org.example.entity
+#  configuration:
+#    map-underscore-to-camel-case: true
 
 ## ========================zipkin===================
 #management:

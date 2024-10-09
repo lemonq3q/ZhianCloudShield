@@ -23,9 +23,9 @@ import java.util.Iterator;
 
 public class FileUtil {
 
-    public final static String IMAGE_SAVE_PATH = "*****";
+    public final static String IMAGE_SAVE_PATH = "E:\\CodeTest\\file_save\\image";
 
-    public final static String MODEL_SAVE_PATH = "******";
+    public final static String MODEL_SAVE_PATH = "E:\\CodeTest\\file_save\\model";
 
     public static void main(String[] args) {
         try {
@@ -179,7 +179,7 @@ public class FileUtil {
 
     public static boolean uploadFile(String savePath,String filePath){
         try {
-            FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://localhost:9001/FileDataService");
+            FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://26.18.243.179:9001/FileDataService");
             fileDataService.upload(savePath, fileToByte(filePath));
             return true;
         } catch (MalformedURLException | RemoteException | NotBoundException e) {
@@ -190,7 +190,7 @@ public class FileUtil {
 
     public static boolean downloadFile(String savePath,String filePath){
         try {
-            FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://localhost:9001/FileDataService");
+            FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://26.18.243.179:9001/FileDataService");
             byte[] fileData = fileDataService.getFile(filePath);
             FileOutputStream fos = new FileOutputStream(savePath);
             fos.write(fileData);

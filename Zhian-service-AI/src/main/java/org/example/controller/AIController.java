@@ -14,12 +14,12 @@ public class AIController {
     @Autowired
     private AIService aiService;
 
-    @PostMapping("/AI/detectTest")
+    @PostMapping("/ai/detectTest")
     public ResultData PictureDetect(@RequestParam("file") MultipartFile file,@RequestParam("name") String name,@RequestParam("model") Integer id){
         return aiService.PictureDetect(file,name,id);
     }
 
-    @PostMapping("/AI/updateFile")
+    @PostMapping("/ai/updateFile")
     public ResultData updateFile(@RequestParam("file") MultipartFile file,@RequestParam("name") String name,@RequestParam("type") String type){
     	return aiService.updateFile(file,name,type);
     }

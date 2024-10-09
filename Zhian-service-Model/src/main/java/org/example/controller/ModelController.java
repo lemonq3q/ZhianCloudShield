@@ -122,7 +122,7 @@ public class ModelController {
         return modelService.uploadTestImage(file,filename);
     }
 
-    @PostMapping("/model/updateDeviceModel")
+    @GetMapping("/model/updateDeviceModel")
     public String updateDeviceModel(String oldDevice_id,String newDevice_id){
         return modelService.updateDeviceModel(oldDevice_id,newDevice_id);
     }

@@ -1,5 +1,7 @@
 package org.example.service.impl;
 
+import org.example.annotation.Master;
+import org.example.annotation.Slave;
 import org.example.dao.DeviceModelMapper;
 import org.example.dao.ModelMapper;
 import org.example.entity.Model;
@@ -24,15 +26,16 @@ public class ModelImpl implements ModelService {
     @Autowired
     DeviceModelMapper deviceModelMapper;
 
-    @Value("${upload.path}")
-    private String imagePath;
+    private static final String IMAGE_PATH = "****";
 
+    @Slave
     @Override
     //获取所有模型信息
     public List<Model> getAll() {
         return modelMapper.getAllModel();
     }
 
+    @Slave
     @Override
     //根据设备号获取
     public ResultData getModelByDevice(String device_id) {
@@ -40,6 +43,7 @@ public class ModelImpl implements ModelService {
         return ResultData.success(modelMapper.getModelByDevice(device_id));
     }
 
+    @Master
     @Override
     //修改信息
     //设备和模型之间是多对多的关系
@@ -55,6 +59,7 @@ public class ModelImpl implements ModelService {
         }
     }
 
+    @Master
     @Override
     //删除模型
     public String deleteModel(int id) {
@@ -71,6 +76,7 @@ public class ModelImpl implements ModelService {
         }
     }
 
+    @Master
     @Override
     //更新模型信息
     public String updateBaseInfo(String modelName, String modelDesc, int level, int id) {
@@ -82,6 +88,7 @@ public class ModelImpl implements ModelService {
         }
     }
 
+    @Master
     @Override
     //添加模型信息
     public String addBaseInfo(String modelName, String modelDesc, int level) {
@@ -95,6 +102,7 @@ public class ModelImpl implements ModelService {
         }
     }
 
+    @Master
     @Override
     //训练完成后发送信息
     public String uploadTrainInfo(int id, int rounds, float accuracy, String modelPath) {
@@ -144,7 +152,7 @@ public class ModelImpl implements ModelService {
     public String uploadTestImage(MultipartFile file, String filename) {
         try {
             //保存文件的完整路径
-            String filePath = imagePath + filename;
+            String filePath = IMAGE_PATH + filename;
             //创建File对象
             File existingFile = new File(filePath);
             //检查这个对象是否存在
@@ -160,12 +168,14 @@ public class ModelImpl implements ModelService {
         }
     }
 
+    @Master
     @Override
     public String updateDeviceModel(String oldDevice_id, String newDevice_id) {
         deviceModelMapper.updateDeviceModel(oldDevice_id,newDevice_id);
         return "success";
     }
 
+    @Master
     @Override
     public String deleteDeviceModel(String device_id) {
         deviceModelMapper.deleteDeviceModel(device_id);

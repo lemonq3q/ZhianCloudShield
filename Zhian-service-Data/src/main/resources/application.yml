@@ -19,9 +19,9 @@ spring:
     slave2:
       type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3308/demondb?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+      jdbc-url: jdbc:mysql://26.116.9.136:3307/demondb?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
       username: root
-      password: 20040619Lmy
+      password: 111111
 
 # ========================rabbitmq===================
   rabbitmq:
