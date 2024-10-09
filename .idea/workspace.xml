@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d2ea75c3-df5c-42cf-985b-bab90fdb7965" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/config/RabbitmqNameConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/config/RedisInit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/bean/DBContextHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/bean/DBContextHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/bean/DBHeartBeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/bean/DBHeartBeat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/config/RabbitmqConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/config/RabbitmqConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/config/RedisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/entity/Temperature.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/entity/Temperature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/util/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-api-commons/src/main/java/org/example/util/RedisUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-sercie-Risk/src/main/java/org/example/service/impl/RiskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-sercie-Risk/src/main/java/org/example/service/impl/RiskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-AI/src/main/java/org/example/mq/OneNetListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-AI/src/main/java/org/example/mq/OneNetListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-AI/src/main/java/org/example/service/impl/AIServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-AI/src/main/java/org/example/service/impl/AIServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-Data/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-Data/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/DataMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/DataMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/config/DataSourceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/config/DataSourceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/config/MybatisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/config/MybatisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/controller/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/controller/DataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/mapper/HumiditysMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/mapper/HumiditysMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/mapper/TemperaturesMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/mapper/TemperaturesMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/mq/OneNetListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/mq/OneNetListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/service/impl/DataImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-Data/src/main/java/org/example/service/impl/DataImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-Data/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-Data/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-IOT/src/main/java/org/example/service/impl/OneNetImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-IOT/src/main/java/org/example/service/impl/OneNetImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-info/src/main/java/org/example/mq/AttendanceListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-info/src/main/java/org/example/mq/AttendanceListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Zhian-service-push/src/main/java/org/example/mq/RiskListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Zhian-service-push/src/main/java/org/example/mq/RiskListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2magNheN1aTNemItUlPsAcjVGuF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/吕丰新/Downloads/demondb.sql",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "spring.configuration.checksum": "bdf1f107ea8d96290b5ce2e581c35057",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Main">
+    <configuration name="AIMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Zhian-service-AI" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.AIMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Zhian-service-Data" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.DataMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DeviceMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Zhian-service-device" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.DeviceMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IOTMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Zhian-service-IOT" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.IOTMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InfoMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Zhian-service-info" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.InfoMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Zhian-service-login" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.LoginMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Zhian-api-commons" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ModelMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Zhian-service-Model" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.ModelMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PushMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Zhian-service-push" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.PushMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RiskMain" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="Zhian-sercie-Risk" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.RiskMain" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="d2ea75c3-df5c-42cf-985b-bab90fdb7965" name="更改" comment="" />
+      <created>1727320062621</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727320062621</updated>
+      <workItem from="1727320063691" duration="1210000" />
+      <workItem from="1727334283744" duration="5926000" />
+      <workItem from="1728351043056" duration="4855000" />
+      <workItem from="1728441528082" duration="283000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
