@@ -1,5 +1,5 @@
 server:
-  port: 8004
+  port: 8010
 
 # ==========applicationName + druid-mysql8 driver===================
 spring:
@@ -30,9 +30,6 @@ spring:
     username: guest
     password: guest
     virtual-host: /
-    listener:
-      simple:
-        prefetch: 100
 
 # ========================mybatis===================
 mybatis:

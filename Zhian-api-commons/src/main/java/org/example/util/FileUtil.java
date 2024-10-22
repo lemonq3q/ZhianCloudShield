@@ -23,9 +23,13 @@ import java.util.Iterator;
 
 public class FileUtil {
 
-    public final static String IMAGE_SAVE_PATH = "E:\\CodeTest\\file_save\\image";
+    public final static String IMAGE_SAVE_PATH = "E:/CodeTest/file_save/image";
 
-    public final static String MODEL_SAVE_PATH = "E:\\CodeTest\\file_save\\model";
+    public final static String MODEL_SAVE_PATH = "E:/CodeTest/file_save/model";
+
+    public final static String FILE_URL = "26.18.243.179";
+
+    public final static String FILE_PORT = "9001";
 
     public static void main(String[] args) {
         try {
@@ -179,7 +183,7 @@ public class FileUtil {
 
     public static boolean uploadFile(String savePath,String filePath){
         try {
-            FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://26.18.243.179:9001/FileDataService");
+            FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://" + FILE_URL + ":" + FILE_PORT +"/FileDataService");
             fileDataService.upload(savePath, fileToByte(filePath));
             return true;
         } catch (MalformedURLException | RemoteException | NotBoundException e) {
@@ -190,7 +194,7 @@ public class FileUtil {
 
     public static boolean downloadFile(String savePath,String filePath){
         try {
-            FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://26.18.243.179:9001/FileDataService");
+            FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://" + FILE_URL + ":" + FILE_PORT + "/FileDataService");
             byte[] fileData = fileDataService.getFile(filePath);
             FileOutputStream fos = new FileOutputStream(savePath);
             fos.write(fileData);
@@ -200,6 +204,17 @@ public class FileUtil {
             e.printStackTrace();
             return false;
        }
+    }
+
+    public static boolean isExist(String filePath,long delayTime){
+        try {
+            FileDataService fileDataService = (FileDataService) Naming.lookup("rmi://" + FILE_URL + ":" + FILE_PORT + "/FileDataService");
+            boolean result = fileDataService.isExist(filePath,delayTime);
+            return result;
+        } catch (NotBoundException | IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 

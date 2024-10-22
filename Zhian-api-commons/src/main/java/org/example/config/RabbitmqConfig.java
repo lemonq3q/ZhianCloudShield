@@ -17,9 +17,11 @@ public class RabbitmqConfig extends RabbitmqNameConfig{
     @Bean
     DirectExchange detectExchange(){ return new DirectExchange(DETECT_EXCHANGE); }
 
+    @Bean
+    DirectExchange logExchange(){return new DirectExchange(LOG_EXCHANGE);}
+
     //队列定义
     @Bean
-
     public Queue temperatureQueue(){
         return new Queue(TEMP_QUEUE);
     }
@@ -42,6 +44,11 @@ public class RabbitmqConfig extends RabbitmqNameConfig{
     @Bean
     public Queue riskQueue(){
         return new Queue(RISK_QUEUE);
+    }
+
+    @Bean
+    public Queue logQueue(){
+        return new Queue(LOG_QUEUE);
     }
 
     //绑定定义
@@ -74,4 +81,11 @@ public class RabbitmqConfig extends RabbitmqNameConfig{
     public Binding bindingRisk(@Qualifier("riskQueue") Queue riskQueue, @Qualifier("detectExchange") DirectExchange detectExchange) {
         return BindingBuilder.bind(riskQueue).to(detectExchange).with(RISK_ROUTING_KEY);
     }
+
+    @Bean
+    @Qualifier("bindingLog")
+    public Binding bindingLog(@Qualifier("logQueue") Queue logQueue, @Qualifier("logExchange") DirectExchange detectExchange) {
+        return BindingBuilder.bind(logQueue).to(detectExchange).with(LOG_ROUTING_KEY);
+    }
+
 }

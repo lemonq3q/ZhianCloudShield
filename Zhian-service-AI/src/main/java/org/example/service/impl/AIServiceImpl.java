@@ -61,4 +61,53 @@ public class AIServiceImpl implements AIService {
         }
         return ResultData.success("file upload succeed");
     }
+
+    @Override
+    public ResultData getDetectPicUrl(String name){
+        long delayTime = 1000 * 30;
+        final boolean[] yes_result = {false};
+        final boolean[] no_result = {false};
+
+        FileUtil.isExist(FileUtil.IMAGE_SAVE_PATH+ "/" + name,delayTime);
+
+        Thread thread1 = new Thread(() -> {
+
+            yes_result[0] = FileUtil.isExist(FileUtil.IMAGE_SAVE_PATH+"/"+name.split(".")[0]+"_yes"+name.split(".")[1],delayTime);
+            interruptThreadByName("thread2");
+        },"thread1");
+
+        Thread thread2 = new Thread(() -> {
+            no_result[0] = FileUtil.isExist(FileUtil.IMAGE_SAVE_PATH+"/"+name.split(".")[0]+"_no"+name.split(".")[1],delayTime);
+            interruptThreadByName("thread1");
+        },"thread2");
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join(); // 等待线程1执行完毕
+            thread2.join(); // 等待线程2执行完毕
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if(yes_result[0]){
+            return ResultData.success("http://"+ FileUtil.FILE_URL +":80/image/" + name);
+        }
+        else{
+            return ResultData.fail("500","get failed");
+        }
+    }
+
+    private static void interruptThreadByName(String name) {
+        ThreadGroup currentGroup = Thread.currentThread().getThreadGroup();
+        Thread[] threads = new Thread[currentGroup.activeCount()];
+        currentGroup.enumerate(threads);
+
+        for (Thread thread : threads) {
+            if (thread != null && thread.getName().equals(name)) {
+                thread.interrupt();
+                break;
+            }
+        }
+    }
 }

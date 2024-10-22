@@ -22,7 +22,7 @@ public class DBHeartBeat {
     @Autowired
     private DataSource slave2DataSource;
 
-    @Scheduled(fixedDelay = 5000) // 每隔5秒执行一次
+    @Scheduled(fixedDelay = 30000) // 每隔30秒执行一次
     public void checkDatabaseStatus() {
         DBContextHolder.setDBAvailableMap(DBTypeEnum.MASTER,isDatabaseAvailable(masterDataSource));
         System.out.println("master数据库可用性："+DBContextHolder.getDBAvailableMap(DBTypeEnum.MASTER));

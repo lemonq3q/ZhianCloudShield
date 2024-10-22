@@ -21,6 +21,7 @@
         <module>Zhian-service-info</module>
         <module>Zhian-service-AI</module>
         <module>Zhian-service-user</module>
+        <module>Zhian-service-log</module>
     </modules>
 
     <properties>

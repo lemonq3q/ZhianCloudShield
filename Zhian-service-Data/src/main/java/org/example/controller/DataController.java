@@ -3,6 +3,7 @@ package org.example.controller;
 
 import org.example.annotation.Master;
 import org.example.annotation.Slave;
+import org.example.annotation.SystemControllerLog;
 import org.example.entity.*;
 import org.example.mapper.TemperaturesMapper;
 import org.example.resp.ResultData;
@@ -29,6 +30,7 @@ public class DataController {
      * @param workshop
      * @return
      */
+    @SystemControllerLog(operation = "test" , type = "info")
     @GetMapping("/getData/getNowTemperature")
     public ResultData getNowTemperature(String workshop){
 
@@ -41,6 +43,7 @@ public class DataController {
      * @param workshop
      * @return
      */
+    @SystemControllerLog(operation = "test" , type = "info")
     @GetMapping("/getData/getNowHumidity")
     public ResultData getNowHumidity(String workshop){
         return dataService.getNowHumidity(workshop);
@@ -55,6 +58,7 @@ public class DataController {
      * @param endNumber
      * @return
      */
+    @SystemControllerLog(operation = "test" , type = "info")
     @GetMapping("/getData/getTemperatureByPage")
     public ResultData getTemperatureByPage(String workshop,int startNumber,int endNumber){
         return dataService.getTemperatureByPage(workshop,startNumber,endNumber);
@@ -67,6 +71,7 @@ public class DataController {
      * @param endNumber
      * @return
      */
+    @SystemControllerLog(operation = "test" , type = "info")
     @GetMapping("/getData/getHumidityByPage")
     public ResultData getHumidityByPage(String workshop,int startNumber,int endNumber){
         return dataService.getHumidityByPage(workshop,startNumber,endNumber);
