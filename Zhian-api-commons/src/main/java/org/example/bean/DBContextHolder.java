@@ -28,7 +28,7 @@ public class DBContextHolder {
 
     public static void master() {
         set(DBTypeEnum.MASTER);
-        System.out.println("切换到"+DBTypeEnum.MASTER);
+        //System.out.println("切换到"+DBTypeEnum.MASTER);
     }
 
     public static void slave() {
@@ -41,14 +41,14 @@ public class DBContextHolder {
         for (int i = 0; i < dbTypeEnums.length; i++) {
             if(DBAvailableMap.get(dbTypeEnums[index]) && dbTypeEnums[index] != DBTypeEnum.MASTER){
                 set(dbTypeEnums[index]);
-                System.out.println("切换到"+dbTypeEnums[index]);
+                //System.out.println("切换到"+dbTypeEnums[index]);
                 return;
             }
             index = (index + 1) % dbTypeEnums.length;
         }
         //所有从库都挂了，随便给一个
         set(DBTypeEnum.SLAVE1);
-        System.out.println("所有从库都宕机了");
+        //System.out.println("所有从库都宕机了");
     }
 
 

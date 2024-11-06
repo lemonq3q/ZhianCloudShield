@@ -31,7 +31,7 @@ public class DataController {
      * @return
      */
     @SystemControllerLog(operation = "test" , type = "info")
-    @GetMapping("/getData/getNowTemperature")
+    @GetMapping("/data/getNowTemperature")
     public ResultData getNowTemperature(String workshop){
 
         return dataService.getNowTemperature(workshop);
@@ -44,7 +44,7 @@ public class DataController {
      * @return
      */
     @SystemControllerLog(operation = "test" , type = "info")
-    @GetMapping("/getData/getNowHumidity")
+    @GetMapping("/data/getNowHumidity")
     public ResultData getNowHumidity(String workshop){
         return dataService.getNowHumidity(workshop);
     }
@@ -58,8 +58,8 @@ public class DataController {
      * @param endNumber
      * @return
      */
-    @SystemControllerLog(operation = "test" , type = "info")
-    @GetMapping("/getData/getTemperatureByPage")
+    //@SystemControllerLog(operation = "test" , type = "info")
+    @GetMapping("/data/getTemperatureByPage")
     public ResultData getTemperatureByPage(String workshop,int startNumber,int endNumber){
         return dataService.getTemperatureByPage(workshop,startNumber,endNumber);
     }
@@ -72,7 +72,7 @@ public class DataController {
      * @return
      */
     @SystemControllerLog(operation = "test" , type = "info")
-    @GetMapping("/getData/getHumidityByPage")
+    @GetMapping("/data/getHumidityByPage")
     public ResultData getHumidityByPage(String workshop,int startNumber,int endNumber){
         return dataService.getHumidityByPage(workshop,startNumber,endNumber);
     }

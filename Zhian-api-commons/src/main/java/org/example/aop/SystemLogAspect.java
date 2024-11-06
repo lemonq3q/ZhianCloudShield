@@ -55,8 +55,8 @@ public class SystemLogAspect {
             String type = systemControllerLog.type();
             adminLog.setType(type);
             /*打印*/
-            logger.info("操作事件 :" + operation);
-            logger.info("事件类型为:" + type);
+            //logger.info("操作事件 :" + operation);
+            //logger.info("事件类型为:" + type);
         }
         /*获取请求体内容*/
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
@@ -68,7 +68,7 @@ public class SystemLogAspect {
 //        System.out.println(remoteAddr1 + "处理前的ip-----------" + remoteAddr + "处理后的ip");
         /*存请求地址，请求方式，请求IP*/
         adminLog.setRemoteAddr(remoteAddr);
-        logger.info("客户端IP为：" + remoteAddr);
+        //logger.info("客户端IP为：" + remoteAddr);
         adminLog.setRequestUri(requestUri);
         logger.info("请求路径为：" + requestUri);
         adminLog.setMethod(requestMethod);
