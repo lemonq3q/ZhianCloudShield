@@ -1,5 +1,8 @@
 package org.example.util;
 
+import org.apache.commons.compress.archivers.ArchiveEntry;
+import org.apache.commons.compress.archivers.ArchiveException;
+import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream;
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipFile;
 import org.springframework.web.multipart.MultipartFile;
@@ -179,6 +182,44 @@ public class FileUtil {
         }
         return b;
     }
+
+    public static void unzip(String zipFilePath, String destDirectory) throws IOException, ArchiveException {
+        // 创建解压目标目录
+        File destDir = new File(destDirectory);
+        if (!destDir.exists()) {
+            destDir.mkdir();
+        }
+
+        // 创建 ZipArchiveInputStream 来读取 zip 文件
+        try (ZipArchiveInputStream zipIn = new ZipArchiveInputStream(new FileInputStream(zipFilePath))) {
+            ArchiveEntry entry = zipIn.getNextEntry();
+            // 遍历 zip 文件中的每个条目
+            while (entry != null) {
+                String filePath = destDirectory + File.separator + entry.getName();
+                if (!entry.isDirectory()) {
+                    // 如果是文件，则解压
+                    extractFile(zipIn, filePath);
+                } else {
+                    // 如果是目录，则创建目录
+                    File dir = new File(filePath);
+                    dir.mkdir();
+                }
+                zipIn.close();
+                entry = zipIn.getNextEntry();
+            }
+        }
+    }
+
+    private static void extractFile(ZipArchiveInputStream zipIn, String filePath) throws IOException {
+        try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath))) {
+            byte[] bytesIn = new byte[4096];
+            int read = 0;
+            while ((read = zipIn.read(bytesIn)) != -1) {
+                bos.write(bytesIn, 0, read);
+            }
+        }
+    }
+
 
 
     public static boolean uploadFile(String savePath,String filePath){
