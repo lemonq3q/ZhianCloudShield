@@ -6,9 +6,9 @@ import java.rmi.server.UnicastRemoteObject;
 import org.example.util.FileDataService;
 import org.example.util.FileUtil;
 
-public class FileDataService_impl extends UnicastRemoteObject implements FileDataService {
+public class FileDataServiceImpl extends UnicastRemoteObject implements FileDataService {
 
-    public FileDataService_impl() throws RemoteException{
+    public FileDataServiceImpl() throws RemoteException{
 
     }
 

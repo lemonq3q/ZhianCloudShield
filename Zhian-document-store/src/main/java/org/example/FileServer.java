@@ -13,7 +13,7 @@ public class FileServer {
 
     public FileServer(){
         try{
-            fileDataService = new FileDataService_impl();
+            fileDataService = new FileDataServiceImpl();
             LocateRegistry.createRegistry(9001);
             Naming.rebind("rmi://localhost:9001/FileDataService",fileDataService);
             System.out.println("文件服务器启动。。。。。。");

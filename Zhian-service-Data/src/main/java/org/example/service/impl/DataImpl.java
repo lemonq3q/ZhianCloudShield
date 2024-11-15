@@ -3,6 +3,7 @@ package org.example.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import org.example.annotation.Slave;
+import org.example.annotation.SystemControllerLog;
 import org.example.entity.*;
 import org.example.mapper.HumiditysMapper;
 import org.example.mapper.MeterMapper;
@@ -76,6 +77,7 @@ public class DataImpl implements DataService {
 
     @Override
     @Slave
+    @SystemControllerLog()
     //分页查询，分页获取当前温度数据
     public ResultData getTemperatureByPage(String workshop, int startNumber, int endNumber) {
         Set<String> idSet = redisTemplate.opsForZSet().reverseRange(workshop+":temperature_id",startNumber,endNumber);

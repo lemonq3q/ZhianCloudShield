@@ -38,6 +38,7 @@ public class RiskServiceImpl implements RiskService {
     }
 
     @Override
+    @Slave
     //根据风险编号查询
     public Risk getRiskById(int id) {
         if(id==0) return null;

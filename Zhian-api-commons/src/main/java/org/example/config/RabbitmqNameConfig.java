@@ -20,5 +20,4 @@ public class RabbitmqNameConfig {
     public static final String RISK_ROUTING_KEY = "risk";
     public static final String LOG_ROUTING_KEY = "log";
 
-
 }

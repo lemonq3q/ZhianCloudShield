@@ -9,11 +9,11 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@MapperScan("org.example.mapper")
 @EnableFeignClients
 @EnableDiscoveryClient
 @RefreshScope
 @EnableScheduling
-@MapperScan("org.example.mapper")
 public class DataMain {
     public static void main(String[] args) {
         SpringApplication.run(DataMain.class, args);

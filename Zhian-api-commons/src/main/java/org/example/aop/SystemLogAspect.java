@@ -55,17 +55,12 @@ public class SystemLogAspect {
             String type = systemControllerLog.type();
             adminLog.setType(type);
             /*打印*/
-            //logger.info("操作事件 :" + operation);
-            //logger.info("事件类型为:" + type);
         }
-        /*获取请求体内容*/
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String requestUri = request.getRequestURI();/*获取请求地址*/
         String requestMethod = request.getMethod();/*获取请求方式*/
         String remoteAddr1 = request.getRemoteAddr();/*获取请求IP*/
         String remoteAddr = this.getIpAddress(request);
-//        logger.info(remoteAddr1);
-//        System.out.println(remoteAddr1 + "处理前的ip-----------" + remoteAddr + "处理后的ip");
         /*存请求地址，请求方式，请求IP*/
         adminLog.setRemoteAddr(remoteAddr);
         //logger.info("客户端IP为：" + remoteAddr);
@@ -85,18 +80,6 @@ public class SystemLogAspect {
                 adminLog.setParams(params);
             }
         }
-      /*  // 操作人账号、姓名（需要提前将用户信息存到session）
-        AdminUser adminUser = (AdminUser) request.getSession().getAttribute("adminUser");
-        if (adminUser != null) {
-
-            Integer userId = adminUser.getUserId();
-            System.out.println(userId);
-            String userName = adminUser.getUserName();
-            adminLog.setUserId(userId); *//*存入操作人Id*//*
-            adminLog.setUserName(userName); *//*存入操作人名字*//*
-            logger.info("操作员是" + userName);
-            logger.info("操作员Id为"+userId);
-        }*/
         Object proceed = null;
 
         try {

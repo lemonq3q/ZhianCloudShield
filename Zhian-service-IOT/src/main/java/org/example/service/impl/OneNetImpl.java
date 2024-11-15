@@ -7,11 +7,11 @@ import org.example.entity.OnenetData;
 import org.example.service.OneNetService;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
-
 
 @Service
 public class OneNetImpl implements OneNetService {

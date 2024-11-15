@@ -1,0 +1,64 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: Zhian-gateway #以微服务注册进consul
+  cloud:
+    consul: #配置consul地址
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        service-name: ${spring.application.name}
+    gateway:
+      routes:
+        - id: risk_routh
+          uri: lb://Zhian-service-risk
+          predicates:
+            - Path=/gateway/risk/**
+
+        - id: ai-routh
+          uri: lb://Zhian-service-ai
+          predicates:
+            - Path=/gateway/ai/**
+
+        - id: data_routh
+          uri: lb://Zhian-service-data
+          predicates:
+            - Path=/gateway/data/**
+
+        - id: device_routh
+          uri: lb://Zhian-service-device
+          predicates:
+            - Path=/gateway/device/**
+
+        - id: info_routh
+          uri: lb://Zhian-service-info
+          predicates:
+            - Path=/gateway/info/**
+
+        - id: iot_routh
+          uri: lb://Zhian-service-iot
+          predicates:
+            - Path=/gateway/iot/**
+
+        - id: login_routh
+          uri: lb://Zhian-service-login
+          predicates:
+            - Path=/gateway/login/**
+
+        - id: model_routh
+          uri: lb://Zhian-service-model
+          predicates:
+            - Path=/gateway/model/**
+
+        - id: push_routh
+          uri: lb://Zhian-service-push
+          predicates:
+            - Path=/gateway/push/**
+
+        - id: user_routh
+          uri: lb://Zhian-service-user
+          predicates:
+            - Path=/gateway/user/**

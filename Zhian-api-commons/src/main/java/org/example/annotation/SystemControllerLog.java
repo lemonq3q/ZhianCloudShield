@@ -6,6 +6,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)   //注解在运行阶段执行
 @Documented  //生成文档
 public @interface SystemControllerLog {
-    String operation() default "";
-    String type();
+    String operation() default "get";
+    String type() default "user";
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.swing.text.Position;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @RestController
 public class DataController {
@@ -24,6 +25,14 @@ public class DataController {
     @Autowired
     private TemperaturesMapper temperaturesMapper;
 
+
+    @GetMapping("/data/delay")
+    public ResultData delayTest() throws InterruptedException {
+        Random random = new Random();
+        int delayTime = (int)(2 + 4 * random.nextDouble())*1000;
+        Thread.sleep(delayTime);
+        return ResultData.success("success");
+    }
 
     /**
      * 获取即时温度
